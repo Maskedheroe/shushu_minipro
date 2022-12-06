@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "Docker": "../common/docker/Docker"
+  }
+}
