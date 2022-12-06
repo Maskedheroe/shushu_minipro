@@ -1,2 +1,5 @@
 <!--components/playlist/playlist.wxml-->
-<text>components/playlist/playlist.wxml</text>
+<view class="booklist-container">
+  <image class="booklist-img" src="{{bookitem.picUrl}}"></image>
+  <view class="booklist-name">{{bookitem.name}}</view>
+</view>

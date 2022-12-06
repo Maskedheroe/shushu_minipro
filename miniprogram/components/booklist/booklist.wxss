@@ -1,1 +1,25 @@
 /* components/playlist/playlist.wxss */
+.booklist-container {
+  position: relative;
+  width: 200rpx;
+  position: relative;
+  padding: 20rpx;
+}
+
+.booklist-img {
+  width: 100%;
+  height: 220rpx;
+  border-radius: 6rpx;
+  /* wxapp中 url不能是网络图片  */
+}
+
+.booklist-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 26rpx;
+  line-height: 1.2;
+  padding: 2px 0 0 6px;
+}
