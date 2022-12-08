@@ -1,4 +1,5 @@
 // pages/playlist/playlist.js
+// 交易发布列表页
 import throttle from '../../utils/throttle'
 const MAX_LIMIT = 15
 Page({

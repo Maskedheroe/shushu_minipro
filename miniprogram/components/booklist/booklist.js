@@ -19,5 +19,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    handleClickItem() {
+      console.log('1');
+      wx.navigateTo({
+        url: `../../pages/booktrade/booktrade?bookid=${this.properties.bookitem.id}`,
+        // 需要传递发布者信息，物品信息
+      })
+    }
   }
 })
