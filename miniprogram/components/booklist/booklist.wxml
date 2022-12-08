@@ -1,5 +1,6 @@
 <!--components/playlist/playlist.wxml-->
-<view class="booklist-container" bindtap="handleClickItem">
+<view class="booklist-container">
   <image class="booklist-img" src="{{bookitem.picUrl}}"></image>
   <view class="booklist-name">{{bookitem.name}}</view>
+  <view class="view-count">1 人浏览</view>
 </view>

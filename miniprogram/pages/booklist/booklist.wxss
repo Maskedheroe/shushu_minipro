@@ -7,4 +7,8 @@
   flex-wrap: wrap;
   margin-top: 10rpx;
   font-display: row;
+  background: #F1F1F1;
+}
+.bookitem {
+  flex: 1;
 }

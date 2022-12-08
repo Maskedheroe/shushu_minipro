@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "x-booklist": "/components/booklist/booklist"
+    "x-booklist": "/components/booklist/booklist",
+    "van-card": "@vant/weapp/card/index"
   },
   "enablePullDownRefresh": true
 }

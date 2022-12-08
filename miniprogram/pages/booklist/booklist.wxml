@@ -6,8 +6,8 @@
   </block>
 </swiper>
 <view class="booklist">
-<block wx:for="{{booklist}}" wx:if="{{booklist.length}}" wx:key="id">
-  <x-booklist bookitem="{{item}}">
-  </x-booklist>
-</block>
+  <block wx:for="{{booklist}}" wx:if="{{booklist.length}}" wx:key="id">
+    <x-booklist bookitem="{{item}}" class="bookitem">
+    </x-booklist>
+  </block>
 </view>

@@ -1,9 +1,11 @@
 /* components/playlist/playlist.wxss */
 .booklist-container {
   position: relative;
-  width: 200rpx;
-  position: relative;
+  width: 280rpx;
   padding: 20rpx;
+  margin: 10rpx 0;
+  background: #fff;
+  border-radius: 18rpx;
 }
 
 .booklist-img {
@@ -16,10 +18,19 @@
 .booklist-name {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 26rpx;
   line-height: 1.2;
   padding: 2px 0 0 6px;
+}
+
+.view-count {
+  position: relative;
+  top: 8px;
+  left: 100px;
+  padding-bottom: 4px;
+  color:gray;
+  font-size: 10px;
 }
