@@ -1,17 +1,35 @@
-// pages/blog/blog.js
+// pages/trade-find/trade-find.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tradeList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const loadTradeList = async () => {
+      const res = await wx.cloud.callFunction({
+        name: 'tradeInfo',
+        data: {
+          $url: 'list',
+          start: 0,
+          count: 10
+        }
+      })
+      const { result } = res
+      if (result.code === 200) {
+        this.setData({
+          tradeList: [...this.data.tradeList, ...result.data.data]
+        })
+        console.log('>', this.data.tradeList);
+      } // TODO 请求失败逻辑没做
+    }
+    loadTradeList()
 
   },
 

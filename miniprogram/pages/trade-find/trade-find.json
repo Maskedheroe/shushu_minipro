@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "Search": "/components/search/search",
-    "Publish": "/components/publish/publish"
+    "Publish": "/components/publish/publish",
+    "TradeCard": "/components/tradeCard/tradeCard"
   },
   "navigationBarTitleText": "发现"
 }

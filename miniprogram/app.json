@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/booklist/booklist",
-    "pages/blog/blog",
+    "pages/trade-find/trade-find",
     "pages/profile/profile",
     "pages/booktrade/booktrade",
     "pages/trade-edit/trade-edit"
@@ -16,7 +16,7 @@
         "selectedIconPath": "images/zhuye_actived.png"
       },
       {
-        "pagePath": "pages/blog/blog",
+        "pagePath": "pages/trade-find/trade-find",
         "text": "发现",
         "iconPath": "images/find.png",
         "selectedIconPath": "images/find_actived.png"

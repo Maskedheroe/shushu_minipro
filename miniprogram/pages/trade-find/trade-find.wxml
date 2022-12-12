@@ -1,0 +1,19 @@
+<!--pages/trade-find/trade-find.wxml-->
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <Publish iconfont="iconfont" icon-fabu="icon-fabu" />
+    <view class="search-container">
+      <Search />
+    </view>
+  </view>
+
+  <!-- 交易信息展示卡片 -->
+  <view class="trade-list">
+    <block wx:for="{{tradeList}}" wx:key="_id">
+      <view class="trade-panel">
+        <TradeCard tradeitem="{{item}}" />
+      </view>
+    </block>
+  </view>
+</view>

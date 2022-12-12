@@ -18,5 +18,6 @@
 </view>
 <view class="footer" style="bottom: {{footerBottom}};">
   <text class="words-nums">{{wordsNum}}</text>
-  <button class="send-btn">发布</button>
+  <button class="send-btn" bindtap="handleSend">发布</button>
 </view>
+<Dialog id="van-dialog" class="dialog"></Dialog>

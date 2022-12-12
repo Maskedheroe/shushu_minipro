@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Grid": "@vant/weapp/grid/index",
+    "GridItem": "@vant/weapp/grid-item/index"
+  }
+}

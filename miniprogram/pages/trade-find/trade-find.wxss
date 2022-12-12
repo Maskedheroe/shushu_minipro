@@ -28,3 +28,12 @@
 .search-container {
   flex: 1;
 }
+
+.trade-list {
+  margin-top: 120rpx;
+}
+
+.trade-panel {
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}

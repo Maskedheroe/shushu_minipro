@@ -1,8 +1,12 @@
 // pages/trade-edit/trade-edit.js
+import useUploadEffect from './useUploadEffect'
+import Dialog from '@vant/weapp/dialog/dialog';
+
 // 输入文字最大长度
 const MAX_WORDS_NUM = 150
 // 最大图片数量
 const MAX_IMG_NUM = 9
+
 Page({
 
   /**
@@ -12,22 +16,28 @@ Page({
     wordsNum: 0,
     footerBottom: 0,
     imgs: [],
-    selectPhoto: true // 添加图片标识是否显示
+    selectPhoto: true, // 添加图片标识是否显示
+    content: '',
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const {
-      nickName
-    } = JSON.parse(options.info)
+    const userInfo = JSON.parse(options.info)
+    this.setData({
+      userInfo
+    })
   },
   onInput(event) {
     const words = event.detail.value || ''
     let wordsNum = words.length
     wordsNum >= MAX_WORDS_NUM ? wordsNum = `最大字数为${MAX_WORDS_NUM}` : this.setData({
       wordsNum
+    })
+    this.setData({
+      content: words
     })
   },
   onFocus(event) {
@@ -79,5 +89,44 @@ Page({
       urls: this.data.imgs,
       current
     })
-  }
+  },
+  handleSend() {
+    // 发布主流程 文字+用户信息(openId、昵称、头像、时间)发送至数据库中储存
+    // 图片发送至云存储中存储，获得 fileId
+    // 图片fileId存至相对应用户数据库中
+    if (!this.data.content.trim()) {
+      wx.showModal({
+        title: '请输入内容',
+        content: ''
+      })
+      return
+    }
+    const {
+      popUpDialog,
+      saveToDataBase
+    } = useUploadEffect(this.data.imgs) // 用一个hook控制发布主流程
+    Dialog.confirm({
+        title: '发布',
+        message: '要发布吗？'
+      })
+      .then(async () => {
+        wx.showLoading({
+          title: '发布中',
+        })
+        const {
+          promiseArr,
+          fileIds
+        } = await popUpDialog()
+        // console.log('>> content', this.data.content, this.data.userInfo);
+        // console.log('>>> p, f', promiseArr, fileIds);
+        await saveToDataBase(this.data.content, this.data.userInfo, promiseArr, fileIds)
+      })
+      .catch((error) => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '当前发布失败',
+          icon: 'error'
+        })
+      });
+  },
 })
