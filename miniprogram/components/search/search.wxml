@@ -1,0 +1,6 @@
+<!--components/search/search.wxml-->
+<view>
+  <van-search placeholder="{{placeHolder}}" use-action-slot>
+    <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" class="searchbtn" size="small" slot="action" type="info">{{btnName}}</van-button>
+  </van-search>
+</view>

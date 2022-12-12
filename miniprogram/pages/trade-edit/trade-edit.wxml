@@ -1,0 +1,22 @@
+<!--pages/trade-edit/trade-edit.wxml-->
+<view class="container">
+  <textarea bindinput="onInput" class="content" maxlength="140" placeholder="要卖什么书？" auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
+  <view class="img-list">
+    <!-- 显示图片 -->
+    <block wx:for="{{imgs}}" wx:key="*this">
+      <view class="image-wrap">
+        <image src="{{item}}" mode="aspectFill" class="image" bindtap="onhandlePreview" data-imgsrc="{{item}}"/>
+        <i class="iconfont icon-delete" bindtap="handleDeleteImg" data-index="{{index}}"></i>
+      </view>
+    </block>
+
+    <!-- 选择图片 -->
+    <view class="image-wrap selectphoto" bindtap="handleChooseImg" hidden="{{!selectPhoto}}">
+      <i class="iconfont icon-add"></i>
+    </view>
+  </view>
+</view>
+<view class="footer" style="bottom: {{footerBottom}};">
+  <text class="words-nums">{{wordsNum}}</text>
+  <button class="send-btn">发布</button>
+</view>

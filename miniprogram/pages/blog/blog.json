@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "Search": "/components/search/search",
+    "Publish": "/components/publish/publish"
+  },
+  "navigationBarTitleText": "发现"
 }

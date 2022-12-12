@@ -1,5 +1,6 @@
 {
   "component": true,
   "usingComponents": {
+    "Popup": "@vant/weapp/popup/index"
   }
 }

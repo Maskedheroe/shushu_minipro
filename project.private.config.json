@@ -51,6 +51,13 @@
           "pathName": "pages/updateRecordSuccess/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "blog",
+          "pathName": "pages/blog/blog",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

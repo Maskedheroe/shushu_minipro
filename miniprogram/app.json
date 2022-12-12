@@ -3,7 +3,8 @@
     "pages/booklist/booklist",
     "pages/blog/blog",
     "pages/profile/profile",
-    "pages/booktrade/booktrade"
+    "pages/booktrade/booktrade",
+    "pages/trade-edit/trade-edit"
    ],
   "tabBar": {
     "color": "#474747",

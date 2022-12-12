@@ -1,0 +1,4 @@
+<!--components/loginAuth/loginAuth.wxml-->
+<view>
+  <button class="btn" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">获取授权信息</button>
+</view>
