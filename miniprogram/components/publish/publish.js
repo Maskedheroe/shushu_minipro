@@ -1,4 +1,5 @@
 // components/publish/publish.js
+import throttle from '../../utils/throttle'
 Component({
   /**
    * 组件的属性列表
@@ -23,6 +24,7 @@ Component({
   methods: {
     handlePublish() {
       // 业务主逻辑
+      // TODO 防抖没做
       this.handleGetAuth()
     },
     showPopup() {
@@ -50,7 +52,9 @@ Component({
         success: (res) => {
           if (res.authSetting["scope.userInfo"]) {
             wx.getUserInfo({
-              success: (res) => this.handleLoginSuccess(res.userInfo)
+              success: (res) => {
+                return this.handleLoginSuccess(res.userInfo)
+              }
             })
           } else {
             this.setData({

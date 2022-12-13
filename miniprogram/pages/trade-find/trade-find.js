@@ -26,7 +26,6 @@ Page({
         this.setData({
           tradeList: [...this.data.tradeList, ...result.data.data]
         })
-        console.log('>', this.data.tradeList);
       } // TODO 请求失败逻辑没做
     }
     loadTradeList()

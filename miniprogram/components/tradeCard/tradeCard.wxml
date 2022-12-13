@@ -4,7 +4,7 @@
     <image class="trade-portrait" src="{{tradeitem.avatarUrl}}"></image>
     <view class="trade-box">
       <view>{{tradeitem.nickName}}</view>
-      <view class="trade-time">{{tradeitem.createTime}}</view>
+      <view class="trade-time">{{_createTime}}</view>
     </view>
   </view>
   <view class="trade-content">{{tradeitem.content}}</view>
