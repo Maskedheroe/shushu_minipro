@@ -20,7 +20,17 @@ exports.main = async (event, context) => {
   })
 
   app.router('list', async (ctx, next) => {
-    const tradeList = await tradeCollection.skip(event.start)
+    const keywords = event.keywords
+    let w = {}
+    if (keywords.trim() !== '') {
+      w = {
+        content: db.RegExp({
+          regexp: keywords,
+          options: 'i'
+        })
+      }
+    }
+    const tradeList = await tradeCollection.where(w).skip(event.start)
       .limit(event.count)
       .orderBy('createTime', 'desc')
       .get()

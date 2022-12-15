@@ -16,7 +16,6 @@ const formatTime = (date) => {
       fmt = fmt.replace(RegExp.$1, o[k].toString().length === 1 ? '0' + o[k] : o[k])
     }
   }
-  console.log('fmt:', fmt);
   return fmt
 }
 export default formatTime

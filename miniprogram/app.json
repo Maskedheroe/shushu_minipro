@@ -4,7 +4,8 @@
     "pages/trade-find/trade-find",
     "pages/profile/profile",
     "pages/booktrade/booktrade",
-    "pages/trade-edit/trade-edit"
+    "pages/trade-edit/trade-edit",
+    "pages/trade-detail/trade-detail"
    ],
   "tabBar": {
     "color": "#474747",

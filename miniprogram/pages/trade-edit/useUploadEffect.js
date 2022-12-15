@@ -3,7 +3,7 @@ const useUploadEffect = (imgs) => {
 
   const fileIds = []
 
-  const popUpDialog = () => {
+  const saveTocloudFiles = () => {
     const promiseArr = []
     for (const item of imgs) {
       const p = new Promise((resolve, reject) => {
@@ -25,7 +25,7 @@ const useUploadEffect = (imgs) => {
     return {
       promiseArr,
       fileIds
-    } 
+    }
   }
   // 存储到云数据库
   const saveToDataBase = (contentText, userInfo, promiseArr, fileIds) => {
@@ -52,9 +52,17 @@ const useUploadEffect = (imgs) => {
       })
     })
   }
+  const backAndRefresh = (getCurrentPages) => {
+    // 成功之后返回trade-find页面
+    wx.navigateBack()
+    const pages = getCurrentPages()
+    const prevPage = pages[pages.length - 2]
+    prevPage.onPullDownRefresh()
+  }
   return {
-    popUpDialog,
-    saveToDataBase
+    saveTocloudFiles,
+    saveToDataBase,
+    backAndRefresh
   }
 }
 

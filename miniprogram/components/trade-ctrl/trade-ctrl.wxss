@@ -1,0 +1,52 @@
+/* components/trade-ctrl/trade-ctrl.wxss */
+.ctrl {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  height: 100%;
+}
+
+.ctrl-item {
+  flex: 1;
+  text-align: center;
+  color: rgba(40, 47, 60, 0.8);
+  font-size: 26rpx;
+  height: 60rpx;
+  display: flex;
+  font-display: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.ctrl-item .icon {
+  margin-right: 12rpx;
+  font-size: 32rpx;
+}
+
+.ctrl-item text {
+  font-size: 32rpx;
+}
+
+.panel {
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  width: 100%;
+  min-height: 300rpx;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+.comment-content {
+  padding: 20rpx 0 0 20rpx;
+}
+.send {
+  display: inline-block;
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 140rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #d43c33;
+}

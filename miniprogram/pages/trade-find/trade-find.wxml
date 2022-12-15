@@ -4,7 +4,7 @@
   <view class="header">
     <Publish iconfont="iconfont" icon-fabu="icon-fabu" />
     <view class="search-container">
-      <Search />
+      <Search bind:search="handleSearch"/>
     </view>
   </view>
 
@@ -12,7 +12,8 @@
   <view class="trade-list">
     <block wx:for="{{tradeList}}" wx:key="_id">
       <view class="trade-panel">
-        <TradeCard tradeitem="{{item}}" />
+        <TradeCard tradeitem="{{item}}" data-tradeid="{{item._id}}" bindtap="handleComment" />
+        <TradeCtrl iconfont="iconfont" icon-comment="icon-comment" icon-share_light="icon-share_light" tradeId="{{item._id}}"/>
       </view>
     </block>
   </view>

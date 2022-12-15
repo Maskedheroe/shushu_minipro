@@ -94,7 +94,7 @@ Page({
     // 发布主流程 文字+用户信息(openId、昵称、头像、时间)发送至数据库中储存
     // 图片发送至云存储中存储，获得 fileId
     // 图片fileId存至相对应用户数据库中
-    if (!this.data.content.trim()) {
+    if (!this.data.content.trim()) { // 校验内容
       wx.showModal({
         title: '请输入内容',
         content: ''
@@ -102,8 +102,9 @@ Page({
       return
     }
     const {
-      popUpDialog,
-      saveToDataBase
+      saveTocloudFiles,
+      saveToDataBase,
+      backAndRefresh
     } = useUploadEffect(this.data.imgs) // 用一个hook控制发布主流程
     Dialog.confirm({
         title: '发布',
@@ -112,14 +113,14 @@ Page({
       .then(async () => {
         wx.showLoading({
           title: '发布中',
+          mask: true
         })
         const {
           promiseArr,
           fileIds
-        } = await popUpDialog()
-        // console.log('>> content', this.data.content, this.data.userInfo);
-        // console.log('>>> p, f', promiseArr, fileIds);
+        } = await saveTocloudFiles() 
         await saveToDataBase(this.data.content, this.data.userInfo, promiseArr, fileIds)
+        backAndRefresh(getCurrentPages)
       })
       .catch((error) => {
         wx.hideLoading()

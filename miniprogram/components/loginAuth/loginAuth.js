@@ -28,6 +28,9 @@ Component({
       } else { // 拒绝授权
         this.triggerEvent('loginFail')
       }
+    },
+    handleClick() {
+      console.log('1111');
     }
   }
 })

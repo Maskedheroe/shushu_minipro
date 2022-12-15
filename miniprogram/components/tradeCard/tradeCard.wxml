@@ -10,7 +10,13 @@
   <view class="trade-content">{{tradeitem.content}}</view>
   <Grid column-num="3" gutter="{{ 10 }}">
     <GridItem use-slot wx:for="{{tradeitem.imgs}}" wx:key="*this">
-      <image style="width: 100%; height: 100px;" src="{{item}}" />
+    <!-- 阻止事件冒泡 -->
+      <image style="width: 100%; height: 100px;"
+      src="{{item}}" 
+      catchtap="onPreview"
+      data-imgsrc="{{item}}"
+      data-imglist="{{tradeitem.imgs}}"
+      />
     </GridItem>
   </Grid>
 </view>

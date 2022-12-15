@@ -1,0 +1,19 @@
+<view class="ctrl">
+  <view class="ctrl-item" bindtap="onComment">
+    <i class="iconfont icon-comment icon"></i>
+    <text>评论</text>
+  </view>
+  <view class="ctrl-item share">
+    <i class="iconfont icon-share_light icon"></i>
+    <text>分享</text>
+  </view>
+</view>
+<Popup show="{{showPop}}" bind:close="onClose" closeable close-icon="close" position="bottom">
+  <LoginAuth bind:loginSuccess="{{handleLoninSuccess}}" bind:loginFail="{{handleLoginFail}}" />
+</Popup>
+<Popup show="{{showComment}}" bind:close="onCloseComment" closeable close-icon="close" position="bottom">
+  <view>
+    <textarea name="content" class="comment-content" placeholder="写评论" value="{{content}}" bindinput="onInput"></textarea>
+    <button class="send" bindtap="handleSend">发送</button>
+  </view>
+</Popup>

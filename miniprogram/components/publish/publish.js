@@ -38,7 +38,6 @@ Component({
       });
     },
     handleLoginFail() {
-      console.log('fail');
       wx.showModal({
         title: '授权用户才能发布',
         content: ''
@@ -63,8 +62,6 @@ Component({
           }
         }
       })
-
-
     },
     _handleGetUserInfoSuccess(userInfo) {
       const bundleRes = JSON.stringify(userInfo)

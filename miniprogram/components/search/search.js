@@ -22,6 +22,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    keywords: ''
   },
 
   observers: {
@@ -32,6 +33,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    handleSearch() {
+      this.triggerEvent('search', {
+        keywords: this.data.keywords
+      })
+    },
+    onChange(e) {
+      this.setData({
+        keywords: e.detail,
+      });
+    },
   }
 })
