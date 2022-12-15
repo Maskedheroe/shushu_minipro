@@ -1,0 +1,8 @@
+<view>
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image class="avatar" src="{{avatarUrl}}"></image>
+  </button>
+  <view class="nickname">
+    <input type="nickname" class="input" placeholder="请输入昵称" />
+  </view>
+</view>

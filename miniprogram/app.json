@@ -5,7 +5,8 @@
     "pages/profile/profile",
     "pages/booktrade/booktrade",
     "pages/trade-edit/trade-edit",
-    "pages/trade-detail/trade-detail"
+    "pages/trade-detail/trade-detail",
+    "pages/login/login"
    ],
   "tabBar": {
     "color": "#474747",

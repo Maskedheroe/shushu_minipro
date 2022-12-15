@@ -42,17 +42,17 @@ Component({
     handleGetAuth() {
       wx.getSetting({
         success: (res) => {
-          if (res.authSetting["scope.userInfo"]) {
-            wx.getUserInfo({
-              success: (res) => {
+          wx.getUserInfo({
+            success: (res) => {
+              if (!res.userInfo === '微信用户') { // 校验是否设置用户名和昵称
+                this.setData({
+                  showPop: true
+                })
+              } else {
                 return this.handleLoginSuccess(res.userInfo)
               }
-            })
-          } else {
-            this.setData({
-              showPop: true
-            })
-          }
+            }
+          })
         }
       })
     },
@@ -72,9 +72,10 @@ Component({
         content: event.detail.value
       })
     },
-    handleSend() {
+    handleSend(event) {
       // 插入数据库
-      const content = this.data.content
+      const content = event.detail.value.content
+      const formId = event.detail.formId
       if (content.trim() === '') {
         wx.showModal({
           title: '评论内容不能为空',
@@ -96,6 +97,16 @@ Component({
           avatarUrl: mUserInfo.avatarUrl
         }
       }).then((res) => {
+        wx.cloud.callFunction({
+          name: 'sendCommentMsg',
+          data: {
+            content,
+            formId,
+            tradeId: this.properties.tradeId
+          }
+        }).then((res) => {
+          console.log(res);
+        })
         wx.hideLoading()
         wx.showToast({
           title: '评论成功',

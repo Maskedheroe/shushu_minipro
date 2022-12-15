@@ -12,8 +12,8 @@
   <LoginAuth bind:loginSuccess="{{handleLoninSuccess}}" bind:loginFail="{{handleLoginFail}}" />
 </Popup>
 <Popup show="{{showComment}}" bind:close="onCloseComment" closeable close-icon="close" position="bottom">
-  <view>
+  <form report-submit="true" bindsubmit="handleSend">
     <textarea name="content" class="comment-content" placeholder="写评论" value="{{content}}" bindinput="onInput"></textarea>
-    <button class="send" bindtap="handleSend">发送</button>
-  </view>
+    <button class="send" form-type="submit">发送</button>
+  </form>
 </Popup>

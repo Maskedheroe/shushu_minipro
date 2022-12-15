@@ -1,0 +1,17 @@
+/* pages/login/login.wxss */
+.avatar-wrapper {
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: 140rpx;
+}
+.avatar {
+
+}
+.nickname {
+  height: 60rpx;
+}
+.input {
+  line-height: 40rpx;
+  padding-left: 30rpx;
+  padding-top: 40rpx;
+}
