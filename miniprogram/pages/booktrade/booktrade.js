@@ -13,9 +13,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log('op:', options);
+    const { bookid } = options
+    this.saveTradeHistory(bookid)
   },
-
+  saveTradeHistory(bookid){
+    const openid = getApp().globalData.openid
+    wx.getStorage({
+      key: openid,
+      success: (res) => {
+        const arr = res.data
+        arr.unshift(bookid)
+        const newHistory = [...new Set(arr)] // 去重
+        wx.setStorage({
+          key: openid,
+          data: newHistory
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

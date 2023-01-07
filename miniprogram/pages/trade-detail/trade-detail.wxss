@@ -1,1 +1,31 @@
 /* pages/trade-detail/trade-detail.wxss */
+.tab-item {
+  color: gray;
+}
+.collect {
+  font-size: 28px;
+  color: red;  
+}
+.tab {
+  margin-top: 100rpx;
+  margin-left: 20rpx;
+}
+.comment-list {
+  display: flex;
+  flex-direction: column;
+}
+.comment {
+  width: 100%;
+}
+.comment-title {
+}
+.comment-portrait {
+  width: 100rpx;
+  height: 100rpx;
+}
+.blog-ctrl {
+  position: fixed;
+  bottom: 10rpx;
+  left: 0;
+  right: 0;
+}

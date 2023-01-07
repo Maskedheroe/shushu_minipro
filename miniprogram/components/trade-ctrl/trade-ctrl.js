@@ -6,7 +6,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    tradeId: String
+    tradeId: String,
+    tradeInfo: Object
   },
   externalClasses: ['icon-share_light', 'icon-comment', "iconfont"],
   /**
@@ -40,18 +41,15 @@ Component({
       });
     },
     handleGetAuth() {
-      wx.getSetting({
+      wx.getUserProfile({
+        desc: '评论时需要头像昵称',
         success: (res) => {
-          wx.getUserInfo({
-            success: (res) => {
-              if (!res.userInfo === '微信用户') { // 校验是否设置用户名和昵称
-                this.setData({
-                  showPop: true
-                })
-              } else {
-                return this.handleLoginSuccess(res.userInfo)
-              }
-            }
+          return this.handleLoginSuccess(res.userInfo)
+        },
+        fail(res) {
+          wx.showToast({
+            title: '授权失败',
+            icon: 'error'
           })
         }
       })
@@ -97,6 +95,7 @@ Component({
           avatarUrl: mUserInfo.avatarUrl
         }
       }).then((res) => {
+        // TODO 发送模板推送消息 未测通
         wx.cloud.callFunction({
           name: 'sendCommentMsg',
           data: {
@@ -115,6 +114,7 @@ Component({
           showComment: false,
           content: ''
         })
+        this.triggerEvent('refreshComment')
       })
     }
   }

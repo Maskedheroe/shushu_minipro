@@ -6,16 +6,24 @@
     "pages/booktrade/booktrade",
     "pages/trade-edit/trade-edit",
     "pages/trade-detail/trade-detail",
-    "pages/login/login"
-   ],
+    "pages/login/login",
+    "pages/collections/collections"
+  ],
   "tabBar": {
     "color": "#474747",
     "selectedColor": "#d43c43",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/booklist/booklist",
         "text": "主页",
         "iconPath": "images/zhuye.png",
         "selectedIconPath": "images/zhuye_actived.png"
+      },
+      {
+        "pagePath": "pages/trade-edit/trade-edit",
+        "text": "卖书",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_actived.png"
       },
       {
         "pagePath": "pages/trade-find/trade-find",

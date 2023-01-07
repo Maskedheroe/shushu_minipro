@@ -43,7 +43,6 @@ const useUploadEffect = (imgs) => {
           title: '发布成功',
         })
       }).catch((err) => {
-        console.log('err', err);
         wx.hideLoading()
         wx.showToast({
           title: '当前发布失败',

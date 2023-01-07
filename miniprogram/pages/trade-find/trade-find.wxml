@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 头部 -->
   <view class="header">
-    <Publish iconfont="iconfont" icon-fabu="icon-fabu" />
+    <!-- <Publish iconfont="iconfont" icon-fabu="icon-fabu" /> -->
     <view class="search-container">
       <Search bind:search="handleSearch"/>
     </view>
@@ -13,7 +13,11 @@
     <block wx:for="{{tradeList}}" wx:key="_id">
       <view class="trade-panel">
         <TradeCard tradeitem="{{item}}" data-tradeid="{{item._id}}" bindtap="handleComment" />
-        <TradeCtrl iconfont="iconfont" icon-comment="icon-comment" icon-share_light="icon-share_light" tradeId="{{item._id}}"/>
+        <TradeCtrl iconfont="iconfont" 
+        tradeInfo="{{item}}"
+        icon-comment="icon-comment"
+        icon-share_light="icon-share_light" 
+        tradeId="{{item._id}}"/>
       </view>
     </block>
   </view>

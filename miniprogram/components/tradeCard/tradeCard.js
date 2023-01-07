@@ -11,6 +11,9 @@ Component({
       default: {}
     }
   },
+  onLoad() {
+    console.log('>>>', this.properties.tradeitem);
+  },
   observers: {
     ['tradeitem.createTime'](val) {
       if (val) {

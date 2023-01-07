@@ -4,8 +4,10 @@
     <text>评论</text>
   </view>
   <view class="ctrl-item share">
-    <i class="iconfont icon-share_light icon"></i>
-    <text>分享</text>
+    <button open-type="share" data-tradeId="{{tradeId}}" data-tradeInfo="{{tradeInfo}}" class="share-btn" hover-class="share-hover">
+      <i class="iconfont icon-share_light icon"></i>
+      <text>分享</text>
+    </button>
   </view>
 </view>
 <Popup show="{{showPop}}" bind:close="onClose" closeable close-icon="close" position="bottom">

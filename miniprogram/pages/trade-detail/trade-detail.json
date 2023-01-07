@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "TradeCard": "../../components/tradeCard/tradeCard",
+    "TradeCtrl": "../../components/trade-ctrl/trade-ctrl"
+  },
+  "navigationBarTitleText": "正文"
 }

@@ -14,6 +14,29 @@ App({
       });
     }
 
-    this.globalData = {};
+    this.globalData = {
+      openid: -1
+    };
+    this.getOpenid()
+  },
+  getOpenid() {
+    wx.cloud.callFunction({
+      name: 'login'
+    }).then(res => {
+      const openid = res.result.openid
+      console.log('od', openid);
+      this.globalData.openid = openid
+      wx.getStorage({
+        key: openid,
+        complete: (res) => {
+          if (!res || !res.data) {
+            wx.setStorage({
+              key: openid,
+              data: []
+            })
+          }
+        }
+      })
+    })
   }
 });

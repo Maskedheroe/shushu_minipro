@@ -1,6 +1,6 @@
 <!--pages/trade-edit/trade-edit.wxml-->
 <view class="container">
-  <textarea bindinput="onInput" class="content" maxlength="140" placeholder="要卖什么书？" auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
+  <textarea bindinput="onInput" value="{{content}}" class="content" maxlength="140" placeholder="买家都关心书名、入手渠道、转手原因..." auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
   <view class="img-list">
     <!-- 显示图片 -->
     <block wx:for="{{imgs}}" wx:key="*this">
@@ -12,7 +12,8 @@
 
     <!-- 选择图片 -->
     <view class="image-wrap selectphoto" bindtap="handleChooseImg" hidden="{{!selectPhoto}}">
-      <i class="iconfont icon-add"></i>
+      <i class="iconfont icon-add">
+      </i>
     </view>
   </view>
 </view>

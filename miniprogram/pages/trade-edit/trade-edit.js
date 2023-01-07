@@ -25,6 +25,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    if (!options.info) {
+      this._handleAuth() // 获取用户信息
+      return
+    }
     const userInfo = JSON.parse(options.info)
     this.setData({
       userInfo
@@ -118,16 +122,47 @@ Page({
         const {
           promiseArr,
           fileIds
-        } = await saveTocloudFiles() 
+        } = await saveTocloudFiles()
         await saveToDataBase(this.data.content, this.data.userInfo, promiseArr, fileIds)
-        backAndRefresh(getCurrentPages)
-      })
-      .catch((error) => {
-        wx.hideLoading()
-        wx.showToast({
-          title: '当前发布失败',
-          icon: 'error'
+        // 发布成功，清空当前页面数据
+        this.setData({
+          content: '',
+          imgs: []
         })
-      });
+        wx.switchTab({
+          url: '/pages/trade-find/trade-find'
+        })
+      })
   },
+  _handleAuth() {
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting["scope.userInfo"]) {
+          wx.showModal({
+            title: '提示',
+            content: '需要获取用户信息',
+            success: (res) => {
+              if (res.confirm) {
+                wx.getUserProfile({
+                  desc: '用于完善会员资料',
+                  success: (res) => {
+                    this.setData({
+                      userInfo: res.userInfo
+                    })
+                  },
+                  fail: (res) => {
+                    console.log('fail', res);
+                  }
+                })
+              } else if (res.cancel) {
+                wx.switchTab({
+                  url: '/pages/trade-find/trade-find'
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  }
 })

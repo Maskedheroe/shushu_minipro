@@ -39,9 +39,9 @@ Page({
     wx.hideLoading()
   },
   handleComment(event) {
-    const tradeid = event.target.dataset.tradeid
+    const tradeId = event.target.dataset.tradeid
     wx.navigateTo({
-      url: `../trade-detail/trade-detail?tradeid=${tradeid}`,
+      url: `../trade-detail/trade-detail?tradeId=${tradeId}`,
     })
   },
   handleSearch(event) {
@@ -101,7 +101,13 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
+  onShareAppMessage(event) {
+    const {
+      tradeinfo
+    } = event.target.dataset
+    return {
+      title: tradeinfo.content,
+      path: `/pages/trade-detail/trade-detail?tradeId=${tradeinfo._id}`,
+    }
   }
 })

@@ -5,6 +5,7 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  // 是否该删除发布评论后的消息推送，增加回复的消息推送
   const { OPENID } = cloud.getWXContext()
   const res = await cloud.openapi.templateMessage.send({
     touser: OPENID,

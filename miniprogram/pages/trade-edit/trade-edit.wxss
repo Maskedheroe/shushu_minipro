@@ -78,3 +78,11 @@
   font-weight: bolder;
   z-index: 99;
 }
+
+.icon-text {
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}

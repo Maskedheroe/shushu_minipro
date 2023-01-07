@@ -1,6 +1,8 @@
 // pages/playlist/playlist.js
 // 交易发布列表页
 import throttle from '../../utils/throttle'
+
+const db = wx.cloud.database()
 const MAX_LIMIT = 15
 Page({
 
@@ -8,18 +10,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swiperImgUrls: [{
-        id: 1,
-        url: 'http://p1.music.126.net/oeH9rlBAj3UNkhOmfog8Hw==/109951164169407335.jpg',
-      },
-      {
-        id: 2,
-        url: 'http://p1.music.126.net/xhWAaHI-SIYP8ZMzL9NOqg==/109951164167032995.jpg',
-      },
-      {
-        id: 3,
-        url: 'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg',
-      }
+    swiperImgUrls: [
+      // {
+      //   id: 1,
+      //   url: 'http://p1.music.126.net/oeH9rlBAj3UNkhOmfog8Hw==/109951164169407335.jpg',
+      // },
+      // {
+      //   id: 2,
+      //   url: 'http://p1.music.126.net/xhWAaHI-SIYP8ZMzL9NOqg==/109951164167032995.jpg',
+      // },
+      // {
+      //   id: 3,
+      //   url: 'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg',
+      // }
     ],
     booklist: []
   },
@@ -29,6 +32,7 @@ Page({
    */
   onLoad(options) {
     this.getBookList()
+    this._fetchSwiper()
   },
 
   /**
@@ -64,6 +68,7 @@ Page({
    */
   onPullDownRefresh() {
     throttle(this.getBookList, 1000)()
+    this._fetchSwiper()
   },
   handlePullDownRefresh() {
     this.setData({
@@ -105,6 +110,13 @@ Page({
       })
       wx.stopPullDownRefresh()
       wx.hideLoading()
+    })
+  },
+  _fetchSwiper() {
+    db.collection('swiper').get().then((res) => {
+      this.setData({
+        swiperImgUrls: res.data
+      })
     })
   }
 })
