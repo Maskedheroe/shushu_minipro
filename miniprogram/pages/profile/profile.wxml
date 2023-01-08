@@ -10,21 +10,38 @@
   </view>
   <view class="nav">
     <view class="nav-item">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <!-- <navigator class="content" url="/pages/collections/collections" hover-class="none">
         <i class="iconfont icon-star"></i>
         <text class="text">收藏</text>
-      </navigator>
+      </navigator> -->
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
         <i class="iconfont icon-star"></i>
-        <text class="text">我要卖的书</text>
+        <text class="text">卖书</text>
       </navigator>
+
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
         <i class="iconfont icon-star"></i>
-        <text class="text">订单</text>
+        <text class="text">求购</text>
       </navigator>
+      
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
         <i class="iconfont icon-star"></i>
-        <text class="text">等等</text>
+        <text class="text">失物招领</text>
+      </navigator>
+
+      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+        <i class="iconfont icon-star"></i>
+        <text class="text">买卖记录</text>
+      </navigator>
+      
+      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+        <i class="iconfont icon-star"></i>
+        <text class="text">地址</text>
+      </navigator>
+      
+      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+        <i class="iconfont icon-star"></i>
+        <text class="text">客服</text>
       </navigator>
     </view>
   </view>

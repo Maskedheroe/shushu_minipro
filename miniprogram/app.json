@@ -7,7 +7,10 @@
     "pages/trade-edit/trade-edit",
     "pages/trade-detail/trade-detail",
     "pages/login/login",
-    "pages/collections/collections"
+    "pages/collections/collections",
+    "pages/shopping-cart/shopping-cart",
+    "pages/classification/classification",
+    "pages/lostandfound/lostandfound"
   ],
   "tabBar": {
     "color": "#474747",
@@ -15,19 +18,25 @@
     "list": [
       {
         "pagePath": "pages/booklist/booklist",
-        "text": "主页",
+        "text": "首页",
         "iconPath": "images/zhuye.png",
         "selectedIconPath": "images/zhuye_actived.png"
       },
       {
-        "pagePath": "pages/trade-edit/trade-edit",
-        "text": "卖书",
-        "iconPath": "images/mine.png",
-        "selectedIconPath": "images/mine_actived.png"
+        "pagePath": "pages/classification/classification",
+        "text": "分类",
+        "iconPath": "images/zhuye.png",
+        "selectedIconPath": "images/zhuye_actived.png"
+      },
+      {
+        "pagePath": "pages/shopping-cart/shopping-cart",
+        "text": "购物车",
+        "iconPath": "images/zhuye.png",
+        "selectedIconPath": "images/zhuye_actived.png"
       },
       {
         "pagePath": "pages/trade-find/trade-find",
-        "text": "发现",
+        "text": "失物招领",
         "iconPath": "images/find.png",
         "selectedIconPath": "images/find_actived.png"
       },
