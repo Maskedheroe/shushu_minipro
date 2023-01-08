@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3816655 */
-  src: url('//at.alicdn.com/t/c/font_3816655_df9bxqix8y7.woff2?t=1673010846439') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3816655_df9bxqix8y7.woff?t=1673010846439') format('woff'),
-       url('//at.alicdn.com/t/c/font_3816655_df9bxqix8y7.ttf?t=1673010846439') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.woff2?t=1673180543426') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.woff?t=1673180543426') format('woff'),
+       url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.ttf?t=1673180543426') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,126 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cart:before {
+  content: "\e698";
+}
+
+.icon-help:before {
+  content: "\e6a3";
+}
+
+.icon-search1:before {
+  content: "\e6ac";
+}
+
+.icon-location:before {
+  content: "\e7ba";
+}
+
+.icon-paperplane:before {
+  content: "\e807";
+}
+
+.icon-place:before {
+  content: "\e82d";
+}
+
+.icon-querybuilder:before {
+  content: "\e843";
+}
+
+.icon-search2:before {
+  content: "\e883";
+}
+
+.icon-search21:before {
+  content: "\e884";
+}
+
+.icon-location1:before {
+  content: "\e970";
+}
+
+.icon-skip:before {
+  content: "\e718";
+}
+
+.icon-hot:before {
+  content: "\e756";
+}
+
+.icon-code:before {
+  content: "\e842";
+}
+
+.icon-add-account:before {
+  content: "\e87a";
+}
+
+.icon-fillin:before {
+  content: "\e6bf";
+}
+
+.icon-location2:before {
+  content: "\e6c5";
+}
+
+.icon-send:before {
+  content: "\e6d5";
+}
+
+.icon-fillin1:before {
+  content: "\e6d6";
+}
+
+.icon-Tab_shouye:before {
+  content: "\e661";
+}
+
+.icon-Tab_goumaifuwu:before {
+  content: "\e662";
+}
+
+.icon-Tab_lishijilu:before {
+  content: "\e663";
+}
+
+.icon-Tab_shezhi:before {
+  content: "\e664";
+}
+
+.icon-nav_icon_shujuchaxun:before {
+  content: "\e614";
+}
+
+.icon-nav_icon_fabuguanli:before {
+  content: "\e615";
+}
+
+.icon-nav_icon_shujushenhe:before {
+  content: "\e616";
+}
+
+.icon-nav_icon_zhiduguanli:before {
+  content: "\e617";
+}
+
+.icon-nav_icon_renwuguanli:before {
+  content: "\e618";
+}
+
+.icon-nav_icon_xiaoxitongzhi:before {
+  content: "\e619";
+}
+
+.icon-nav_icon_shouye:before {
+  content: "\e61a";
+}
+
+.icon-nav_icon_chengxushezhi:before {
+  content: "\e61b";
 }
 
 .icon-shoucang:before {

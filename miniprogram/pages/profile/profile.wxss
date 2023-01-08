@@ -42,5 +42,7 @@ page {
 .content {
   width: 200rpx;
   height: 160rpx;
-  border: gray solid 3rpx;
+}
+.text {
+  display: block;
 }
