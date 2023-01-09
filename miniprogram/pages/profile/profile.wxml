@@ -8,41 +8,42 @@
       <open-data type="userNickName"></open-data>
     </view>
   </view>
-  <view class="nav">
-    <view class="nav-item">
-      <!-- <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
-        <text class="text">收藏</text>
-      </navigator> -->
+  <van-row class="row">
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">卖书</text>
       </navigator>
-
+    </van-col>
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">求购</text>
       </navigator>
-      
+    </van-col>
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-nav_icon_shujushenhe"></i>
         <text class="text">失物招领</text>
       </navigator>
-
+    </van-col>
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-Tab_lishijilu"></i>
         <text class="text">买卖记录</text>
       </navigator>
-      
+    </van-col>
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-location2"></i>
         <text class="text">地址</text>
       </navigator>
-      
+    </van-col>
+    <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-star"></i>
+        <i class="iconfont icon-add-account"></i>
         <text class="text">客服</text>
       </navigator>
-    </view>
-  </view>
+    </van-col>
+  </van-row>
 </view>
