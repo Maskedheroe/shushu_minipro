@@ -30,6 +30,12 @@
     </van-col>
     <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
+        <i class="iconfont icon-add-account"></i>
+        <text class="text">商铺页</text>
+      </navigator>
+    </van-col>
+    <van-col class="col" span="8">
+      <navigator class="content" url="/pages/collections/collections" hover-class="none">
         <i class="iconfont icon-Tab_lishijilu"></i>
         <text class="text">买卖记录</text>
       </navigator>
@@ -42,7 +48,7 @@
     </van-col>
     <van-col class="col" span="8">
       <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-add-account"></i>
+        <i class="iconfont icon-help"></i>
         <text class="text">客服</text>
       </navigator>
     </van-col>
