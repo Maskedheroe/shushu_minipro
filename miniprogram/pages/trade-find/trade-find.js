@@ -1,5 +1,6 @@
 // pages/trade-find/trade-find.js
 const REQUEST_TRADEINFO_COUNT = 10
+// 失物招领界面
 Page({
 
   /**

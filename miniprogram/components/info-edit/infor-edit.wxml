@@ -1,0 +1,28 @@
+<!--components/info-edit/infor-edit.wxml-->
+<!-- 基础交易信息编辑组件 -->
+<view>
+
+  <view class="container">
+    <textarea bindinput="onInput" value="{{content}}" class="content" maxlength="140" placeholder="买家都关心书名、入手渠道、转手原因..." auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
+    <view class="img-list">
+      <!-- 显示图片 -->
+      <block wx:for="{{imgs}}" wx:key="*this">
+        <view class="image-wrap">
+          <image src="{{item}}" mode="aspectFill" class="image" bindtap="onhandlePreview" data-imgsrc="{{item}}" />
+          <i class="iconfont icon-delete" bindtap="handleDeleteImg" data-index="{{index}}"></i>
+        </view>
+      </block>
+
+      <!-- 选择图片 -->
+      <view class="image-wrap selectphoto" bindtap="handleChooseImg" hidden="{{!selectPhoto}}">
+        <i class="iconfont icon-add">
+        </i>
+      </view>
+    </view>
+  </view>
+  <view class="footer" style="bottom: {{footerBottom}};">
+    <text class="words-nums">{{wordsNum}}</text>
+    <button class="send-btn" bindtap="handleSend">发布</button>
+  </view>
+  <Dialog id="van-dialog" class="dialog"></Dialog>
+</view>

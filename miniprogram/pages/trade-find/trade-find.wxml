@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 头部 -->
   <view class="header">
-    <!-- <Publish iconfont="iconfont" icon-fabu="icon-fabu" /> -->
+    <Publish iconfont="iconfont" icon-fabu="icon-fabu" />
     <view class="search-container">
       <Search bind:search="handleSearch"/>
     </view>
