@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/booklist/booklist",
-    "pages/trade-find/trade-find",
+    "pages/lost-find/lost-find",
     "pages/profile/profile",
     "pages/booktrade/booktrade",
     "pages/trade-edit/trade-edit",
@@ -10,7 +10,7 @@
     "pages/collections/collections",
     "pages/shopping-cart/shopping-cart",
     "pages/classification/classification",
-    "pages/lostandfound/lostandfound"
+    "pages/lost-edit/lost-edit"
   ],
   "tabBar": {
     "color": "#474747",
@@ -35,7 +35,7 @@
         "selectedIconPath": "images/zhuye_actived.png"
       },
       {
-        "pagePath": "pages/trade-find/trade-find",
+        "pagePath": "pages/lost-find/lost-find",
         "text": "失物招领",
         "iconPath": "images/find.png",
         "selectedIconPath": "images/find_actived.png"

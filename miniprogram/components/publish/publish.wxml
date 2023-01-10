@@ -3,7 +3,4 @@
   <view class="publish-container" bind:tap="handlePublish">
     <i class="iconfont icon-fabu"></i>
   </view>
-  <Popup show="{{showPop}}" bind:close="onClose" closeable close-icon="close" position="bottom">
-    <LoginAuth bind:loginSuccess="{{handleLoninSuccess}}" bind:loginFail="{{handleLoginFail}}"/>
-  </Popup>
 </view>

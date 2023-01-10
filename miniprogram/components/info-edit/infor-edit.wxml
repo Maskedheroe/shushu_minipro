@@ -1,9 +1,8 @@
 <!--components/info-edit/infor-edit.wxml-->
 <!-- 基础交易信息编辑组件 -->
 <view>
-
   <view class="container">
-    <textarea bindinput="onInput" value="{{content}}" class="content" maxlength="140" placeholder="买家都关心书名、入手渠道、转手原因..." auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
+    <textarea bindinput="onInput" value="{{content}}" class="content" maxlength="140" placeholder="{{hint}}" auto-focus bindfocus="onFocus" bindblur="onBlur"></textarea>
     <view class="img-list">
       <!-- 显示图片 -->
       <block wx:for="{{imgs}}" wx:key="*this">

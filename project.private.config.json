@@ -55,7 +55,7 @@
         },
         {
           "name": "blog",
-          "pathName": "pages/trade-find/trade-find",
+          "pathName": "pages/lost-find/lost-find",
           "query": "",
           "launchMode": "default",
           "scene": null

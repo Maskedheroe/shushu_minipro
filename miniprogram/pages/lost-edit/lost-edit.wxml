@@ -1,0 +1,7 @@
+<!--pages/lostandfound/lostandfound.wxml-->
+<view>
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{ role }}" options="{{ roleOption }}" bind:change="onSwitch1Change"/>
+  </van-dropdown-menu>
+  <info-edit userInfo="{{userInfo}}" iconfont="iconfont" icon-add="icon-add" icon-delete="icon-delete" role="{{role}}" />
+</view>

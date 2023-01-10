@@ -1,7 +1,13 @@
 // components/info-edit/infor-edit.js
+// 基础交易信息编辑组件
 import useUploadEffect from '../../components/info-edit/useUploadEffect'
 import Dialog from '@vant/weapp/dialog/dialog';
-
+import {
+  FIND_OWNER,
+  FIND_THINS,
+  FINDER,
+  LOSTER
+} from '../../static/role'
 // 输入文字最大长度
 const MAX_WORDS_NUM = 150
 // 最大图片数量
@@ -12,7 +18,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    userInfo: {}
+    userInfo: {},
+    role: {
+      type: String,
+      observer: function (newVal, oldVal) {
+        this.setData({
+          hint: newVal === 'FIND_OWNER' ? FIND_OWNER : FIND_THINS
+        })
+      }
+    }
   },
   externalClasses: ["iconfont", "icon-delete", "icon-add"],
   /**
@@ -23,7 +37,8 @@ Component({
     footerBottom: 0,
     imgs: [],
     selectPhoto: true, // 添加图片标识是否显示
-    content: ''
+    content: '',
+    hint: ''
   },
   /**
    * 组件的方法列表
@@ -102,7 +117,8 @@ Component({
       }
       const {
         saveTocloudFiles,
-        saveToDataBase
+        saveToDataBase,
+        backAndRefresh
       } = useUploadEffect(this.data.imgs) // 用一个hook控制发布主流程
       Dialog.confirm({
           context: this,
@@ -120,15 +136,9 @@ Component({
             promiseArr,
             fileIds
           } = await saveTocloudFiles()
-          await saveToDataBase(this.data.content, this.properties.userInfo, promiseArr, fileIds)
+          await saveToDataBase(this.data.content, this.properties.userInfo, promiseArr, fileIds, this.properties.role)
           // 发布成功，清空当前页面数据
-          this.setData({
-            content: '',
-            imgs: []
-          })
-          wx.switchTab({
-            url: '/pages/trade-find/trade-find'
-          })
+          backAndRefresh(getCurrentPages)
         })
     }
   }

@@ -28,14 +28,15 @@ const useUploadEffect = (imgs) => {
     }
   }
   // 存储到云数据库
-  const saveToDataBase = (contentText, userInfo, promiseArr, fileIds) => {
+  const saveToDataBase = (contentText, userInfo, promiseArr, fileIds, role) => {
     return Promise.all(promiseArr).then((res) => {
       db.collection('trade-infomation').add({
         data: {
           ...userInfo,
           content: contentText,
           imgs: fileIds,
-          createTime: db.serverDate() // 获取服务端的时间
+          createTime: db.serverDate(), // 获取服务端的时间
+          role
         }
       }).then((res) => {
         wx.hideLoading()
@@ -52,11 +53,13 @@ const useUploadEffect = (imgs) => {
     })
   }
   const backAndRefresh = (getCurrentPages) => {
-    // 成功之后返回trade-find页面
-    wx.navigateBack()
-    const pages = getCurrentPages()
-    const prevPage = pages[pages.length - 2]
-    prevPage.onPullDownRefresh()
+    // 成功之后返回上一级页面
+    setTimeout(() => {
+      wx.navigateBack()
+      const pages = getCurrentPages()
+      const prevPage = pages[pages.length - 2]
+      prevPage.onPullDownRefresh()
+    }, 1000)
   }
   return {
     saveTocloudFiles,
