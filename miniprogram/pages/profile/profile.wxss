@@ -2,6 +2,7 @@
 page {
   background-color: #f1f1f1
 }
+
 .profile-header {
   display: flex;
   position: relative;
@@ -12,7 +13,12 @@ page {
   align-items: center;
   color: #fff;
   font-weight: 300;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 3rpx rgba(0, 0, 0, 0.3);
+}
+.header_background {
+  position: absolute;
+  width: 100%;
+  height: 480rpx;
 }
 
 .avatar {
@@ -24,6 +30,7 @@ page {
   border-radius: 50%;
   overflow: hidden;
 }
+
 .name {
   position: relative;
   top: -160rpx;
@@ -33,6 +40,7 @@ page {
   font-weight: 1000;
   font-size: 80rpx;
 }
+
 .row {
   position: absolute;
   top: 240px;
@@ -41,6 +49,7 @@ page {
   bottom: 0;
   background-color: #fff;
 }
+
 .col i {
   display: flex;
   justify-content: center;
@@ -48,11 +57,13 @@ page {
   color: rgb(92, 92, 92);
   padding-top: 30rpx;
 }
+
 .content {
   height: 160rpx;
   border-right: 5rpx solid #ccc;
   border-bottom: 5rpx solid #ccc;
 }
+
 .text {
   display: block;
   text-align: center;

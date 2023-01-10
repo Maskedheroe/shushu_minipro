@@ -1,6 +1,7 @@
 <!--pages/profile/profile.wxml-->
 <view>
   <view class="profile-header">
+    <image src="../../images/profile_background.jpg" class="header_background"/>
     <view class="avatar">
       <open-data type="userAvatarUrl"></open-data>
     </view>
