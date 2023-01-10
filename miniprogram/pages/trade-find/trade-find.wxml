@@ -1,24 +1,2 @@
 <!--pages/trade-find/trade-find.wxml-->
-<view class="container">
-  <!-- 头部 -->
-  <view class="header">
-    <!-- <Publish iconfont="iconfont" icon-fabu="icon-fabu" /> -->
-    <view class="search-container">
-      <Search bind:search="handleSearch"/>
-    </view>
-  </view>
-
-  <!-- 交易信息展示卡片 -->
-  <view class="trade-list">
-    <block wx:for="{{tradeList}}" wx:key="_id">
-      <view class="trade-panel">
-        <TradeCard tradeitem="{{item}}" data-tradeid="{{item._id}}" bindtap="handleComment" />
-        <TradeCtrl iconfont="iconfont" 
-        tradeInfo="{{item}}"
-        icon-comment="icon-comment"
-        icon-share_light="icon-share_light" 
-        tradeId="{{item._id}}"/>
-      </view>
-    </block>
-  </view>
-</view>
+<text>pages/trade-find/trade-find.wxml</text>

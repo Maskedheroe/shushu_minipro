@@ -1,20 +1,31 @@
-// pages/trade-edit/trade-edit.js
-
-// 失物招领编辑页面
-
+// pages/lostandfound/lostandfound.js
+import {
+  FINDER,
+  LOSTER
+} from '../../static/role'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    role: 'FIND_OWNER',  // 发布者角色
+    roleOption: [{
+        text: '寻失主',
+        value: FINDER
+      },
+      {
+        text: '寻失物',
+        value: LOSTER
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad(options) {
     this._handleAuth() // 获取用户信息
   },
   _handleAuth() {
@@ -39,13 +50,20 @@ Page({
                 })
               } else if (res.cancel) {
                 wx.switchTab({
-                  url: '/pages/trade-find/trade-find'
+                  url: '/pages/lost-find/lost-find'
                 })
               }
             }
           })
         }
       }
+    })
+  },
+  onSwitch1Change({
+    detail
+  }) {
+    this.setData({
+      role: detail
     })
   }
 })
