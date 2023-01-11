@@ -13,11 +13,10 @@
 .comment-list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 80rpx;
 }
 .comment {
   width: 100%;
-}
-.comment-title {
 }
 .comment-portrait {
   width: 100rpx;
@@ -25,7 +24,7 @@
 }
 .blog-ctrl {
   position: fixed;
-  bottom: 10rpx;
+  bottom: 0;
   left: 0;
   right: 0;
 }

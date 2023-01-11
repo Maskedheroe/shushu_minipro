@@ -1,0 +1,21 @@
+<!--components/base_list/base_list.wxml-->
+<view>
+  <view class="list">
+    <block wx:for="{{list}}" wx:key="_id">
+      <view class="mcard" data-tradeid="{{item._id}}" bindtap="handleClick">
+        <van-card>
+          <view slot="title" class="container">
+            <i wx:if="{{!item.imgs.length}}" class="icon-lostandfound iconfont icon" />
+            <image wx:else="{{item.imgs.length}}" src="{{item.imgs[0]}}" mode="aspectFit" class="image" />
+            <view class="time">
+              {{item.createTime}}
+            </view>
+          </view>
+        </van-card>
+        <view class="content">
+          {{item.content}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

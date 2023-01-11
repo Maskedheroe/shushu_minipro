@@ -1,11 +1,12 @@
 // pages/trade-detail/trade-detail.js
 import formatTime from '../../utils/formatTime'
 import useCollectEffect from './useCollectEffect'
-
+import useDeleteEffect from './useDeleteEffect'
 const {
   checkoutCollect,
   handleCollectEvent
 } = useCollectEffect()
+const { handleDeleteEffect } = useDeleteEffect()
 Page({
 
   /**
@@ -15,7 +16,8 @@ Page({
     tradeInfo: {},
     commentList: [],
     tradeId: '',
-    isCollected: false
+    isCollected: false,
+    isPublisher: false
   },
   observers: {
     'isCollected': (isCollected) => {
@@ -29,7 +31,8 @@ Page({
    */
   async onLoad(options) {
     this.setData({
-      tradeId: options.tradeId
+      tradeId: options.tradeId,
+      isPublisher: options.isPublisher || false
     })
     await this._getTradeDetail()
     const isCollected = await checkoutCollect(this.data.tradeId)
@@ -58,6 +61,10 @@ Page({
             createTime: formatTime(new Date(item.createTime))
           }
         })
+      })
+      const isPublisher = this.data.tradeInfo._openid === getApp().globalData.openid;
+      this.setData({
+        isPublisher: `${isPublisher}`
       })
       wx.hideLoading()
     })
@@ -123,6 +130,19 @@ Page({
     this.setData({
       isCollected,
       icon_collect: isCollected ? 'icon-start-active' : 'icon-star'
+    })
+  },
+  handleDelete() {
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该条信息？',
+      success: (res) => {
+        if (res.confirm) {
+          handleDeleteEffect(this.data.tradeId, getCurrentPages)
+        } else if (res.cancel) {
+          return
+        }
+      }
     })
   }
 })

@@ -7,10 +7,10 @@
     "pages/trade-edit/trade-edit",
     "pages/trade-detail/trade-detail",
     "pages/login/login",
-    "pages/collections/collections",
     "pages/shopping-cart/shopping-cart",
     "pages/classification/classification",
-    "pages/lost-edit/lost-edit"
+    "pages/lost-edit/lost-edit",
+    "pages/losts-record/losts-record"
   ],
   "tabBar": {
     "color": "#474747",

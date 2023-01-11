@@ -12,25 +12,25 @@
   </view>
   <van-row class="row">
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <navigator class="content" url="/pages/booklist/booklist" hover-class="none">
         <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">卖书</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <navigator class="content" url="/pages/booklist/booklist" hover-class="none">
         <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">求购</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <navigator class="content" url="/pages/losts-record/losts-record" hover-class="none">
         <i class="iconfont icon-nav_icon_shujushenhe"></i>
         <text class="text">失物招领</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <navigator class="content" url="/pages/losts-record/losts-record" hover-class="none">
         <i class="iconfont icon-add-account"></i>
         <text class="text">商铺页</text>
       </navigator>

@@ -127,7 +127,6 @@ Component({
           selector: '#van-dialog'
         })
         .then(async () => {
-          console.log('1');
           wx.showLoading({
             title: '发布中',
             mask: true

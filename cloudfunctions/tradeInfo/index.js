@@ -1,6 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-
+// 提供给lost-and-found接口
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 }) // 使用当前云环境
@@ -19,6 +19,7 @@ exports.main = async (event, context) => {
   const app = new TcbRouter({
     event
   })
+  const wxContext = cloud.getWXContext()
 
   app.router('list', async (ctx, next) => {
     const keywords = event.keywords || ''
@@ -79,5 +80,38 @@ exports.main = async (event, context) => {
     }
   })
 
+  app.router('lost_record', async (ctx, next) => {
+    const openid = wxContext.OPENID
+    const lostsList = await tradeCollection.where({
+        _openid: openid
+      }).skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then((res) => {
+        return res
+      })
+    ctx.body = {
+      code: 200,
+      data: lostsList
+    }
+  })
+  app.router('delete', async (ctx, next) => {
+    const {
+      tradeId
+    } = event
+    const res = await tradeCollection.where({
+      _id: tradeId
+    }).remove({
+      success: function (res) {
+        return true
+      }
+    })
+    console.log('res');
+    ctx.body = {
+      code: 200,
+      data: res
+    }
+  })
   return app.serve()
 }

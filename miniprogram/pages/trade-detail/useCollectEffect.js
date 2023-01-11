@@ -25,7 +25,6 @@ const useCollectEffect = () => {
         tradeId
       }
     })
-    console.log('res???', res);
     return !isCollected
   }
   return {
