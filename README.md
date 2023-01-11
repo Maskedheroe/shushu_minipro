@@ -3,4 +3,3 @@
 2、cd shushu_minipro
 3、npm install
 4、最后通过微信开发工具打开
-test

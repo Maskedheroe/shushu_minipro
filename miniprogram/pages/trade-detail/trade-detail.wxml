@@ -4,8 +4,8 @@
     <TradeCard tradeitem="{{tradeInfo}}" wx:if="tradeInfo"></TradeCard>
   </view>
   <view class="trade">
-    <button>交 易</button>
-    <i class="iconfont collect {{icon_collect}}" bindtap="handleCollect"></i>
+    <button wx:if="{{isPublisher === 'true'}}" bindtap="handleDelete">删 除</button>
+    <!-- <i class="iconfont collect {{icon_collect}}" bindtap="handleCollect"></i> -->
   </view>
   <view class="tab">
     <view class="tab-item">

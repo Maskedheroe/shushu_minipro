@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3816655 */
-  src: url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.woff2?t=1673180543426') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.woff?t=1673180543426') format('woff'),
-       url('//at.alicdn.com/t/c/font_3816655_gvkna1druhm.ttf?t=1673180543426') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3816655_4agad8s0u3.woff2?t=1673405490108') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3816655_4agad8s0u3.woff?t=1673405490108') format('woff'),
+       url('//at.alicdn.com/t/c/font_3816655_4agad8s0u3.ttf?t=1673405490108') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lostandfound:before {
+  content: "\e630";
 }
 
 .icon-cart:before {
@@ -115,10 +119,6 @@
 
 .icon-nav_icon_zhiduguanli:before {
   content: "\e617";
-}
-
-.icon-nav_icon_renwuguanli:before {
-  content: "\e618";
 }
 
 .icon-nav_icon_xiaoxitongzhi:before {

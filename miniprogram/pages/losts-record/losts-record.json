@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "base_list": "../../components/base_list/base_list"
+  },
+  "navigationBarTitleText": "失物招领记录",
+  "enablePullDownRefresh": true
+}
