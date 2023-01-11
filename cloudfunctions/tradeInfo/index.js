@@ -32,13 +32,14 @@ exports.main = async (event, context) => {
         })
       }
     }
-    const tradeList = await tradeCollection.where(w).skip(event.start)
+    const tradeList = await tradeCollection.where({...w, complete: false}).skip(event.start)
       .limit(event.count)
       .orderBy('createTime', 'desc')
       .get()
       .then((res) => {
         return res
       })
+    
     ctx.body = {
       code: 200,
       data: tradeList
@@ -96,18 +97,18 @@ exports.main = async (event, context) => {
       data: lostsList
     }
   })
-  app.router('delete', async (ctx, next) => {
+  app.router('complete', async (ctx, next) => {
     const {
-      tradeId
+      tradeId,
+      complete
     } = event
     const res = await tradeCollection.where({
       _id: tradeId
-    }).remove({
-      success: function (res) {
-        return true
+    }).update({
+      data: {
+        complete
       }
     })
-    console.log('res');
     ctx.body = {
       code: 200,
       data: res

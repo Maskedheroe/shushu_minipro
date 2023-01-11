@@ -1,10 +1,11 @@
-const useDeleteEffect = () => {
-  const handleDeleteEffect = async (tradeId, getCurrentPages) => {
+const useCompleteEffect = () => {
+  const handleCompleteEffect = async (tradeId, getCurrentPages) => {
     const res = await wx.cloud.callFunction({
       name: 'tradeInfo',
       data: {
-        $url: 'delete',
-        tradeId
+        $url: 'complete',
+        tradeId,
+        complete: true
       }
     })
     wx.navigateBack()
@@ -13,7 +14,7 @@ const useDeleteEffect = () => {
     prevPage.onPullDownRefresh()
   }
   return {
-    handleDeleteEffect
+    handleCompleteEffect
   }
 }
-export default useDeleteEffect
+export default useCompleteEffect

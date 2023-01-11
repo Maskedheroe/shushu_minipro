@@ -1,12 +1,12 @@
 // pages/trade-detail/trade-detail.js
 import formatTime from '../../utils/formatTime'
 import useCollectEffect from './useCollectEffect'
-import useDeleteEffect from './useDeleteEffect'
+import useCompleteEffect from './useCompleteEffect'
 const {
   checkoutCollect,
   handleCollectEvent
 } = useCollectEffect()
-const { handleDeleteEffect } = useDeleteEffect()
+const { handleCompleteEffect } = useCompleteEffect()
 Page({
 
   /**
@@ -135,10 +135,10 @@ Page({
   handleDelete() {
     wx.showModal({
       title: '提示',
-      content: '是否删除该条信息？',
+      content: '是否完成？',
       success: (res) => {
         if (res.confirm) {
-          handleDeleteEffect(this.data.tradeId, getCurrentPages)
+          handleCompleteEffect(this.data.tradeId, getCurrentPages)
         } else if (res.cancel) {
           return
         }
