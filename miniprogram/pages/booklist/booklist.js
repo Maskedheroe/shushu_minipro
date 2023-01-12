@@ -10,8 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swiperImgUrls: [
-    ],
+    swiperImgUrls: [],
     booklist: []
   },
 
@@ -73,28 +72,32 @@ Page({
     const getBooksWithThrottle = throttle(this.getBookList, 500)
     getBooksWithThrottle()
   },
-
   /**
-   * 用户点击右上角分享
+   * @param { e: { detail: string } } tab 对应的标识 有onSale和buy 
    */
-  onShareAppMessage() {
-
+  handleChangeClassifier({detail}) {
+    // console.log('detail', e.detail);
+    // 请求后端查找不同分类商品 后端接口是books
+    this.getBookList(detail.classifier, true)
   },
-
-  getBookList() {
+  getBookList(classify = 'onSale', changeClassifier = false) {
     wx.showLoading({
       title: '加载中',
     })
+    changeClassifier && this.setData({
+      booklist: []
+    });
     wx.cloud.callFunction({
       name: 'books',
       data: {
         start: this.data.booklist.length,
         count: MAX_LIMIT,
-        $url: 'booklist'
+        $url: 'booklist',
+        classify
       }
     }).then((res) => {
       this.setData({
-        booklist: [...this.data.booklist, ...res.result.data]
+        booklist: [ ...this.data.booklist, ...res.result.data ]
       })
       wx.stopPullDownRefresh()
       wx.hideLoading()

@@ -2,5 +2,4 @@
 <view class="booklist-container" bindtap="handleClickItem">
   <image class="booklist-img" src="{{bookitem.picUrl}}"></image>
   <view class="booklist-name">{{bookitem.name}}</view>
-  <view class="view-count">1 人浏览</view>
 </view>

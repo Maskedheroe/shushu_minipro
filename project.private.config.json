@@ -41,9 +41,10 @@
           "scene": null
         },
         {
-          "name": "pages/updateRecordResult/index",
-          "pathName": "pages/updateRecordResult/index",
+          "name": "pages/booklist/booklist",
+          "pathName": "pages/booklist/booklist",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {

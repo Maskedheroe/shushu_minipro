@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "x-booklist": "/components/booklist/booklist"
+    "x-booklist": "/components/booklist/booklist",
+    "Classifier": "/components/classifier/classifier"
   },
   "enablePullDownRefresh": true
 }

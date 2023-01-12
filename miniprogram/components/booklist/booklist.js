@@ -23,7 +23,6 @@ Component({
       const {
         bookitem
       } = this.properties
-      console.log('1', bookitem);
       wx.navigateTo({
         url: `../../pages/booktrade/booktrade?bookid=${bookitem._id}`,
         // 需要传递发布者信息，物品信息
