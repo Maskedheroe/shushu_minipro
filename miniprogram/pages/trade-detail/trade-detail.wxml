@@ -3,14 +3,16 @@
   <view class="blog-card">
     <TradeCard tradeitem="{{tradeInfo}}" wx:if="tradeInfo"></TradeCard>
   </view>
-  <view class="trade">
-    <button wx:if="{{isPublisher === 'true'}}" bindtap="handleDelete">删 除</button>
-    <!-- <i class="iconfont collect {{icon_collect}}" bindtap="handleCollect"></i> -->
+  <view class="complete">
+    <van-button wx:if="{{isPublisher === 'true'}}" bindtap="handleDelete" type="info" block>
+      已完成
+    </van-button>
   </view>
   <view class="tab">
     <view class="tab-item">
       评论列表
     </view>
+    <van-empty wx:if="{{!commentList.length}}"/>
     <view class="comment-list">
       <block wx:for="{{commentList}}" wx:key="_id">
         <view class="comment">

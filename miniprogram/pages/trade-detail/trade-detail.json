@@ -1,7 +1,9 @@
 {
   "usingComponents": {
     "TradeCard": "../../components/tradeCard/tradeCard",
-    "TradeCtrl": "../../components/trade-ctrl/trade-ctrl"
+    "TradeCtrl": "../../components/trade-ctrl/trade-ctrl",
+    "van-button": "@vant/weapp/button/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
-  "navigationBarTitleText": "正文"
+  "navigationBarTitleText": "详情"
 }

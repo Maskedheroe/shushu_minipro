@@ -36,7 +36,8 @@ const useUploadEffect = (imgs) => {
           content: contentText,
           imgs: fileIds,
           createTime: db.serverDate(), // 获取服务端的时间
-          role
+          role,
+          complete: false
         }
       }).then((res) => {
         wx.hideLoading()
