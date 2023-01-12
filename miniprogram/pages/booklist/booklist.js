@@ -75,7 +75,9 @@ Page({
   /**
    * @param { e: { detail: string } } tab 对应的标识 有onSale和buy 
    */
-  handleChangeClassifier({detail}) {
+  handleChangeClassifier({
+    detail
+  }) {
     // console.log('detail', e.detail);
     // 请求后端查找不同分类商品 后端接口是books
     this.getBookList(detail.classifier, true)
@@ -97,11 +99,14 @@ Page({
       }
     }).then((res) => {
       this.setData({
-        booklist: [ ...this.data.booklist, ...res.result.data ]
+        booklist: [...this.data.booklist, ...res.result.data]
       })
       wx.stopPullDownRefresh()
       wx.hideLoading()
     })
+  },
+  handleSearch({ detail }) {
+    console.log('detail', detail.keywords);
   },
   _fetchSwiper() {
     db.collection('swiper').get().then((res) => {

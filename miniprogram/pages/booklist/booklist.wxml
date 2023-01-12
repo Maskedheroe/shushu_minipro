@@ -8,11 +8,17 @@
     </block>
   </swiper>
   <!-- Banner -->
+
+  <!-- Search -->
+  <Search bind:search="handleSearch"/>
+  <!-- Search -->
+
   <!-- 分类器 -->
   <view class="classifier">
     <Classifier bind:changeClassifier="handleChangeClassifier"/>
   </view>
   <!-- 分类器 -->
+
   <!-- 物品列表页 -->
   <view class="booklist">
     <block wx:for="{{booklist}}" wx:if="{{booklist.length}}" wx:key="id">
