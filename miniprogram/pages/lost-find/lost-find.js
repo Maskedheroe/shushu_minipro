@@ -30,7 +30,6 @@ Page({
         $url: 'list'
       }
     })
-    console.log('ssss', res);
     const {
       result
     } = res
