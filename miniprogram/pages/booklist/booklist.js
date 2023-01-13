@@ -106,7 +106,7 @@ Page({
     })
   },
   handleSearch({ detail }) {
-    console.log('detail', detail.keywords);
+    // TODO shushu_19
   },
   _fetchSwiper() {
     db.collection('swiper').get().then((res) => {
