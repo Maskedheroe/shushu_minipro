@@ -12,13 +12,13 @@
   </view>
   <van-row class="row">
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/booklist/booklist" hover-class="none">
+      <navigator class="content" url="/pages/sale-book/sale-book" hover-class="none">
         <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">卖书</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/booklist/booklist" hover-class="none">
+      <navigator class="content" url="/pages/wanted/wanted" hover-class="none">
         <i class="iconfont icon-nav_icon_zhiduguanli"></i>
         <text class="text">求购</text>
       </navigator>
@@ -30,27 +30,28 @@
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/losts-record/losts-record" hover-class="none">
+      <navigator class="content" url="/pages/my-shop/my-shop" hover-class="none">
         <i class="iconfont icon-add-account"></i>
-        <text class="text">商铺页</text>
+        <text class="text">我的小店</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
+      <navigator class="content" url="/pages/trade-record/trade-record" hover-class="none">
         <i class="iconfont icon-Tab_lishijilu"></i>
         <text class="text">买卖记录</text>
       </navigator>
     </van-col>
+    
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-location2"></i>
-        <text class="text">地址</text>
+      <navigator class="content" url="/pages/service-helper/service-helper" hover-class="none">
+        <i class="iconfont icon-help"></i>
+        <text class="text">客服</text>
       </navigator>
     </van-col>
     <van-col class="col" span="8">
-      <navigator class="content" url="/pages/collections/collections" hover-class="none">
-        <i class="iconfont icon-help"></i>
-        <text class="text">客服</text>
+      <navigator class="content" url="/pages/settings/settings" hover-class="none">
+        <i class="iconfont icon-location2"></i>
+        <text class="text">设置</text>
       </navigator>
     </van-col>
   </van-row>
