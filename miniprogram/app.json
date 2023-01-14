@@ -10,7 +10,14 @@
     "pages/shopping-cart/shopping-cart",
     "pages/classification/classification",
     "pages/lost-edit/lost-edit",
-    "pages/losts-record/losts-record"
+    "pages/losts-record/losts-record",
+    "pages/sale-book/sale-book",
+    "pages/settings/settings",
+    "pages/service-helper/service-helper",
+    "pages/trade-record/trade-record",
+    "pages/shop/shop",
+    "pages/my-shop/my-shop",
+    "pages/wanted/wanted"
   ],
   "tabBar": {
     "color": "#474747",
