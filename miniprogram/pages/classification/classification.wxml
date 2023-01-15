@@ -1,2 +1,27 @@
 <!--pages/classification/classification.wxml-->
-<text>pages/classification/classification.wxml</text>
+<view>
+  <Search bind:search="handleSearch" />
+  <Classifier bind:changeClassifier="handleChangeTab" />
+  <view class="side-container">
+    <van-sidebar active-key="{{ activeKey }}" class="sidebar" bind:change="handleChangeSider">
+      <van-sidebar-item title="公共课" />
+      <van-sidebar-item title="专业课" disabled="{{showMajor}}"/>
+      <block 
+            wx:if="{{showMajor}}" 
+            wx:for="{{classes}}" 
+            wx:for-item="college"
+            wx:key="_id"
+      >
+        <van-sidebar-item title="{{college.name}}" />
+        <block
+              wx:if="{{college.major.length !== 0}}" 
+              wx:for="{{college.major}}"
+              wx:for-item="major"
+              wx:key="_id"
+        >
+          <van-sidebar-item title="{{major.name}}" />
+        </block>
+      </block>
+    </van-sidebar>
+  </view>
+</view>

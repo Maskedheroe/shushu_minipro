@@ -1,1 +1,15 @@
 /* pages/classification/classification.wxss */
+page {
+  background-color: #f1f1f1;
+}
+.side-container {
+  width: 156rpx;
+  height: 100%;
+  background: #fff;
+}
+.sidebar {
+  display: block;
+  height: 85vh;
+  width: 100%;
+  overflow-y: auto;
+}

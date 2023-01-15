@@ -1,11 +1,15 @@
 // pages/classification/classification.js
+import {
+  classes
+} from '../../static/classes.js'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    activeKey: 0,
+    classes: classes,
+    showMajor: false
   },
 
   /**
@@ -19,7 +23,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    const arr = []
+    for(let i = 0, len = classes.length; i < len; i++) {
+      if (classes[i].major.length) {
+        arr.push(...classes[i].major)
+      } else {
+        arr.push(classes[i])
+      }
+    }
+    this.setData({
+      classes: arr
+    })
+    console.log('?', this.data.classes);
   },
 
   /**
@@ -62,5 +77,20 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  handleSearch({
+    detail
+  }) {
+    console.log('detail', detail);
+  },
+  handleChangeTab({
+    detail
+  }) {
+  },
+  handleChangeSider({detail}) {
+    this.setData({
+      showMajor: detail !== 0 ,
+      activeKey: detail === 1 ? 2 : detail 
+    })
   }
 })

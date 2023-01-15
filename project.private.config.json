@@ -67,6 +67,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "classes",
+          "pathName": "pages/classification/classification",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
