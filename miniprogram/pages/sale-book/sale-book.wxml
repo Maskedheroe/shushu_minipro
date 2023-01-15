@@ -1,2 +1,35 @@
 <!--pages/sale-book/sale-book.wxml-->
-<text>pages/sale-book/sale-book.wxml</text>
+<view>
+  <!-- 填单区 -->
+  <van-cell-group class="table">
+    <van-field class="name" placeholder="请输入物品名" />
+    <view class="media">
+
+    </view>
+    <view class="book-class">
+
+    </view>
+
+    <!-- 选择学期 -->
+    <van-field value="{{ grade }}" is-link label="学期" placeholder="请选择学期" bindtap="handleChoice" />
+    <!-- 选择学期 -->
+    <view class="address">
+
+    </view>
+    <view class="material">
+
+    </view>
+    <view class="abrasion">
+      <!-- 磨损程度 -->
+    </view>
+    <van-field class="price" placeholder="请输入价格" />
+    <view class="bargain"></view>
+    <van-field class="content" placeholder="备注" />
+  </van-cell-group>
+  <!-- 填单区 -->
+  <view class="bottom">
+  </view>
+  <van-popup show="{{ showPop }}" round position="bottom">
+    <van-picker columns="{{ gradeOpt }}" bind:change="onChange" show-toolbar bind:cancel="closePop" bind:confirm="closePop" />
+  </van-popup>
+</view>

@@ -1,1 +1,4 @@
 /* pages/sale-book/sale-book.wxss */
+page {
+  background-color: #f1f1f1;
+}

@@ -1,11 +1,15 @@
 // pages/sale-book/sale-book.js
+import { gradeOpt } from '../../static/filedOpt'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showPop: false,
+    grade: '',
+    cascaderValue: '',
+    gradeOpt
   },
 
   /**
@@ -19,7 +23,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    console.log('??', this.data.gradeOpt);
   },
 
   /**
@@ -62,5 +66,15 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  handleChoice() {
+    this.setData({
+      showPop: true
+    })
+  },
+  closePop() {
+    this.setData({
+      showPop: false,
+    });
+  },
 })
