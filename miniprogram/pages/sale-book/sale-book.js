@@ -28,7 +28,7 @@ Page({
     bargain: false,
     currentOpt: [],
     form: {},
-    currentPicker: '',
+    currentPicker: '',  // 目前选择哪条表单在填写
     imgs: [],
     term: '',
     fieldNames: {
@@ -134,6 +134,7 @@ Page({
       showPop: false
     })
   },
+  // 图片上传方法
   handleChooseImg() {
     let maxChoose = MAX_IMG_NUM - this.data.imgs.length
     wx.chooseMedia({
@@ -174,6 +175,8 @@ Page({
       })
     }
   },
+  // 图片上传方法
+
   // 提交表单方法
   handleSubmit() {
     const {
