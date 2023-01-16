@@ -24,7 +24,7 @@ Page({
    */
   onReady() {
     const arr = []
-    for(let i = 0, len = classes.length; i < len; i++) {
+    for (let i = 0, len = classes.length; i < len; i++) {
       if (classes[i].major.length) {
         arr.push(...classes[i].major)
       } else {
@@ -34,7 +34,6 @@ Page({
     this.setData({
       classes: arr
     })
-    console.log('?', this.data.classes);
   },
 
   /**
@@ -78,19 +77,16 @@ Page({
   onShareAppMessage() {
 
   },
-  handleSearch({
-    detail
-  }) {
-    console.log('detail', detail);
-  },
+  handleSearch({ detail }) {},
   handleChangeTab({
     detail
+  }) {},
+  handleChangeSider({
+    detail
   }) {
-  },
-  handleChangeSider({detail}) {
     this.setData({
-      showMajor: detail !== 0 ,
-      activeKey: detail === 1 ? 2 : detail 
+      showMajor: detail !== 0,
+      activeKey: detail === 1 ? 2 : detail
     })
   }
 })
