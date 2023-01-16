@@ -5,6 +5,7 @@ import throttle from '../../utils/throttle'
 import {
   classes
 } from '../../static/classes'
+import formatTime from '../../utils/formatTime'
 const MAX_IMG_NUM = 9
 
 Page({
@@ -15,6 +16,7 @@ Page({
   data: {
     showPop: false,
     showCollegeCate: false,
+    showEndTime: false,
     name: '',
     bookCateGory: '',
     bookCateGoryID: '',
@@ -30,6 +32,10 @@ Page({
       children: 'major'
     },
     imgs: [],
+    endTime: '',
+    minDate: new Date().getTime(),
+    minDate: new Date().getTime(),
+    currentDate: new Date().getTime(), // 不提交给后端，组件专门使用
     classes
   },
 
@@ -110,7 +116,8 @@ Page({
       remark,
       price,
       name,
-      bookCateGoryID
+      bookCateGoryID,
+      endTime
     } = this.data
     const isAuthed = checkoutField({
       bookCateGory,
@@ -118,7 +125,8 @@ Page({
       remark,
       price,
       name,
-      bookCateGoryID
+      bookCateGoryID,
+      endTime
     })
     if (isAuthed) {
       wx.showModal({
@@ -140,6 +148,7 @@ Page({
                   remark,
                   price,
                   name,
+                  endTime,
                   bargain: this.data.bargain
                 }
               }
@@ -148,7 +157,6 @@ Page({
                 title: '发布成功',
               })
               setTimeout(() => {
-                console.log('2222');
                 wx.navigateBack()
               }, 1000);
             })
@@ -204,6 +212,25 @@ Page({
         selectPhoto: true
       })
     }
-  }
+  },
   // 图片上传方法
+
+  handleChooseTime() {
+    this.setData({
+      showEndTime: true
+    })
+  },
+  confirmTime({ detail }) {
+    this.setData({
+      showEndTime: false,
+      endTime: formatTime(new Date(detail)),
+      currentDate: detail
+    });
+  },
+  cancelTime() {
+    this.setData({
+      endTime: '',
+      showEndTime: false
+    })
+  }
 })

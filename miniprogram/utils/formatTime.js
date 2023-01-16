@@ -7,7 +7,6 @@ const formatTime = (date) => {
     'm+': date.getMinutes(),
     's+': date.getSeconds()
   }
-
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, date.getFullYear())
   }

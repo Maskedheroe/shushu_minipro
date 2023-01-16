@@ -7,7 +7,9 @@
 
     <van-field required value="{{ material }}" is-link label="书籍材质" placeholder="书籍材质" bindtap="handleChoice" data-label="material" />
 
-    <van-field required class="price" placeholder="求购价格" value="{{price}}" bind:change="handleChange" data-label="price"/>
+    <van-field required label="截止日期" placeholder="求购截止日期" value="{{endTime}}" data-label="endtime" bindtap="handleChooseTime" />
+
+    <van-field required placeholder="求购价格" value="{{price}}" bind:change="handleChange" data-label="price" />
 
     <van-field class="content" placeholder="备注" value="{{remark}}" bind:change="handleChange" data-label="remark" />
 
@@ -34,7 +36,11 @@
     <van-picker wx:if="{{!showCollegeCate}}" columns="{{ currentOpt }}" bind:change="onChange" show-toolbar bind:cancel="cancelPop" bind:confirm="confirmPicker" />
   </van-popup>
   <van-popup show="{{ showCollegeCate }}" round position="bottom">
-    <van-cascader value="{{ bookCateGory }}" title="请选择所在专业" options="{{ classes }}" bind:close="cancelPop"
-    bind:finish="handleFinishCollegeCate" field-names="{{fieldNames}}" />
+    <van-cascader value="{{ bookCateGory }}" title="请选择所在专业" options="{{ classes }}" bind:close="cancelPop" bind:finish="handleFinishCollegeCate" field-names="{{fieldNames}}" />
   </van-popup>
+
+  <van-popup show="{{ showEndTime }}" round position="bottom">
+    <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:confirm="confirmTime" bind:cancel="cancelTime" />
+  </van-popup>
+
 </view>

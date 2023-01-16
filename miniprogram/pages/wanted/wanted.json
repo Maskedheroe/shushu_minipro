@@ -5,6 +5,7 @@
     "van-cascader": "@vant/weapp/cascader/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-button": "@vant/weapp/button/index",
-    "van-checkbox": "@vant/weapp/checkbox/index"
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
   }
 }
