@@ -16,7 +16,7 @@ var utils_1 = require("./utils");
 var shared_1 = require("./shared");
 var validator_1 = require("../common/validator");
 (0, component_1.VantComponent)({
-    props: __assign(__assign(__assign({ disabled: Boolean, multiple: Boolean, uploadText: String, useBeforeRead: Boolean, afterRead: null, beforeRead: null, previewSize: {
+    props: __assign(__assign(__assign(__assign({ disabled: Boolean, multiple: Boolean, uploadText: String, useBeforeRead: Boolean, afterRead: null, beforeRead: null, previewSize: {
             type: null,
             value: 80,
         }, name: {
@@ -53,7 +53,7 @@ var validator_1 = require("../common/validator");
         }, uploadIcon: {
             type: String,
             value: 'photograph',
-        } }, shared_1.chooseImageProps), shared_1.chooseVideoProps), shared_1.chooseMediaProps),
+        } }, shared_1.chooseImageProps), shared_1.chooseVideoProps), shared_1.chooseMediaProps), shared_1.chooseMessageFileProps),
     data: {
         lists: [],
         isInCount: true,
@@ -144,11 +144,20 @@ var validator_1 = require("../common/validator");
                 return;
             var index = event.currentTarget.dataset.index;
             var lists = this.data.lists;
+            var sources = [];
+            var current = lists.reduce(function (sum, cur, curIndex) {
+                if (!(0, utils_1.isVideoFile)(cur)) {
+                    return sum;
+                }
+                sources.push(__assign(__assign({}, cur), { type: 'video' }));
+                if (curIndex < index) {
+                    sum++;
+                }
+                return sum;
+            }, 0);
             wx.previewMedia({
-                sources: lists
-                    .filter(function (item) { return (0, utils_1.isVideoFile)(item); })
-                    .map(function (item) { return (__assign(__assign({}, item), { type: 'video' })); }),
-                current: index,
+                sources: sources,
+                current: current,
                 fail: function () {
                     wx.showToast({ title: '预览视频失败', icon: 'none' });
                 },

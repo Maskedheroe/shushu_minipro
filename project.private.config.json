@@ -67,6 +67,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "sale-book",
+          "pathName": "pages/sale-book/sale-book",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "mine",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
