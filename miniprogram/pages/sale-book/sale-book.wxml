@@ -3,6 +3,7 @@
   <!-- 填单区 -->
   <van-cell-group class="table">
     <van-field required class="name" placeholder="请输入物品名" value="{{name}}" bind:change="handleChange" data-label="name" />
+    
     <van-field required value="{{ bookCateGory }}" is-link label="书籍类型" placeholder="书籍类型" bindtap="handleChooseCate" data-label="bookCateGory" />
 
     <van-field required value="{{ grade }}" is-link label="年级" placeholder="年级" bindtap="handleChoice" data-label="grade" />
@@ -40,7 +41,7 @@
     <van-button type="danger" size="large" class="submit-btn" bindtap="handleSubmit">发 布</van-button>
   </view>
   <van-popup show="{{ showPop }}" round position="bottom">
-    <van-picker wx:if="{{!showCollegeCate}}" columns="{{ currentOpt }}" bind:change="onChange" show-toolbar bind:cancel="cancelPop" bind:confirm="confirmPicker" />
+    <van-picker wx:if="{{!showCollegeCate}}" columns="{{ currentOpt }}" show-toolbar bind:cancel="cancelPop" bind:confirm="confirmPicker" />
   </van-popup>
   <van-popup show="{{ showCollegeCate }}" round position="bottom">
     <van-cascader value="{{ bookCateGory }}" title="请选择所在专业" options="{{ classes }}" bind:close="cancelPop"
