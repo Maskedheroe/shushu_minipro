@@ -1,4 +1,56 @@
 /* pages/sale-book/sale-book.wxss */
 page {
-  background-color: #f1f1f1;
+  background-color: #fff;
+}
+.bottom {
+  height: 680rpx;
+}
+
+.img-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.image-wrap {
+  position: relative;
+  width: 220rpx;
+  height: 220rpx;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-align: center;
+}
+.selectphoto {
+  width: 200rpx;
+  line-height: 200rpx;
+  border: 2rpx dotted black;
+  text-align: center;
+}
+.icon-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #000;
+  opacity: .4;
+  color: #fff;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 38rpx;
+  font-weight: bolder;
+  z-index: 99;
+}
+
+.bargain {
+  float: right;
+  margin-top: 10rpx;
+}
+
+.submit-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
