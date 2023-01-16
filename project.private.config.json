@@ -69,8 +69,20 @@
           "scene": null
         },
         {
+<<<<<<< HEAD
           "name": "classes",
           "pathName": "pages/classification/classification",
+=======
+          "name": "sale-book",
+          "pathName": "pages/sale-book/sale-book",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "mine",
+          "pathName": "pages/profile/profile",
+>>>>>>> 3027babaa484006da260f25b9e5b45f297d4cd17
           "query": "",
           "launchMode": "default",
           "scene": null

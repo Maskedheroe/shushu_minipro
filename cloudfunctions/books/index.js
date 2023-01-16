@@ -12,7 +12,8 @@ exports.main = async (event, context) => {
   const app = new TcbRouter({
     event
   })
-  const collection = cloud.database().collection('booklist')
+  const db = cloud.database()
+  const collection = db.collection('booklist')
 
   app.router('booklist', async (ctx, _) => {
     const {
@@ -28,6 +29,22 @@ exports.main = async (event, context) => {
       .then(res => {
         return res
       })
+  })
+  app.router('add', (ctx, _) => {
+    const {
+      bookinfo
+    } = event
+    collection.add({
+      data: {
+        ...bookinfo,
+        createTime: db.serverDate(),
+      }
+    }).then(res => {
+      ctx.body = {
+        code: 200,
+        data: res
+      }
+    }).catch(console.error)
   })
   return app.serve()
 }

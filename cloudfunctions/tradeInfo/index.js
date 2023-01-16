@@ -32,14 +32,17 @@ exports.main = async (event, context) => {
         })
       }
     }
-    const tradeList = await tradeCollection.where({...w, complete: false}).skip(event.start)
+    const tradeList = await tradeCollection.where({
+        ...w,
+        complete: false
+      }).skip(event.start)
       .limit(event.count)
       .orderBy('createTime', 'desc')
       .get()
       .then((res) => {
         return res
       })
-    
+
     ctx.body = {
       code: 200,
       data: tradeList
