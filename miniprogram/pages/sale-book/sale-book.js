@@ -2,6 +2,10 @@
 import * as opts from '../../static/filedOpt'
 import checkoutField from '../../utils/checkoutFiled'
 import throttle from '../../utils/throttle'
+import {
+  classes
+} from '../../static/classes'
+
 const MAX_IMG_NUM = 9
 
 Page({
@@ -10,10 +14,11 @@ Page({
    */
   data: {
     showPop: false,
-    cascaderValue: '',
+    showCollegeCate: false,
     grade: '',
     address: '',
     bookCateGory: '',
+    bookCateGoryID: '',
     old: '',
     note: '',
     material: '',
@@ -25,7 +30,13 @@ Page({
     form: {},
     currentPicker: '',
     imgs: [],
-    term: ''
+    term: '',
+    fieldNames: {
+      text: 'name',
+      value: 'id',
+      children: 'major'
+    },
+    classes
     // gradeOpt,
     // addressOpt: address,
     // bookCateGoryOpt: bookCateGory,
@@ -66,26 +77,24 @@ Page({
   onUnload() {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  handleChooseCate() {
+    // TODO 通过设置获取默认学院没做
+    this.setData({
+      showCollegeCate: true
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  handleFinishCollegeCate(e) {
+    const {
+      selectedOptions,
+      value
+    } = e.detail;
+    const bookCateGory = selectedOptions.find(cate => cate.id === value)?.name
+    this.setData({
+      bookCateGory,
+      showCollegeCate: false,
+      bookCateGoryID: value,
+      showPop: false,
+    })
   },
   // 节流优化setData
   handleChange: throttle(function ({
@@ -108,7 +117,7 @@ Page({
       currentPicker: label
     })
   },
-  closePop({
+  confirmPicker({
     detail: {
       value
     }
@@ -121,6 +130,7 @@ Page({
   },
   cancelPop() {
     this.setData({
+      showCollegeCate: false,
       showPop: false
     })
   },
@@ -176,7 +186,8 @@ Page({
       remark,
       price,
       name,
-      term
+      term,
+      bookCateGoryID
     } = this.data
     const isAuthed = checkoutField({
       grade,
@@ -187,33 +198,56 @@ Page({
       material,
       remark,
       price,
-      name
+      name,
+      term
     })
     if (isAuthed) {
-      // 进行request
-      wx.cloud.callFunction({
-        name: 'books',
-        data: {
-          $url: 'add',
-          bookinfo: {
-            grade,
-            address,
-            bookCateGory,
-            old,
-            note,
-            material,
-            remark,
-            price,
-            name,
-            term,
-            bargain: this.data.bargain
+      wx.showModal({
+        title: '提示',
+        content: '是否提交？',
+        success: (res) => {
+          if (res.confirm) {
+            wx.cloud.callFunction({
+              name: 'books',
+              data: {
+                $url: 'add',
+                // 组装完整的数据发给后端
+                bookinfo: {
+                  grade,
+                  address,
+                  bookCateGoryInfo: {
+                    bookCateGory,
+                    bookCateGoryID
+                  },
+                  old,
+                  note,
+                  material,
+                  remark,
+                  price,
+                  name,
+                  term,
+                  bargain: this.data.bargain
+                }
+              }
+            }).then((res) => {
+              wx.showToast({
+                title: '发布成功',
+              })
+              setTimeout(() => {
+                console.log('2222');
+                wx.navigateBack()
+              }, 1000);
+            })
+          } else if (res.cancel) {
+            return
           }
         }
-      }).then((res) => {
-        console.log('okres', res);
       })
     } else {
-      console.log('err', '未满足表单')
+      wx.showToast({
+        title: '信息未填写完整',
+        icon: 'error'
+      })
     }
   },
   changebargain({
