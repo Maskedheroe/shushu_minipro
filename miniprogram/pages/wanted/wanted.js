@@ -149,6 +149,7 @@ Page({
                   price,
                   name,
                   endTime,
+                  imgs: this.data.imgs,
                   bargain: this.data.bargain
                 }
               }

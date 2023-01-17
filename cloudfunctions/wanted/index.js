@@ -30,6 +30,20 @@ exports.main = async (event, context) => {
         return res
       })
   })
+  app.router('mywanted', async (ctx, _) => {
+    const openid = wxContext.OPENID
+
+    ctx.body = await collection.where({
+        openid
+      })
+      .skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then(res => {
+        return res
+      })
+  })
   app.router('add', (ctx, _) => {
     const openid = wxContext.OPENID
 
@@ -40,6 +54,7 @@ exports.main = async (event, context) => {
       data: {
         ...bookinfo,
         createTime: db.serverDate(),
+        got: false,
         openid
       }
     }).then(res => {

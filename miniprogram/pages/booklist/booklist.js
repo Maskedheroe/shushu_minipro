@@ -11,7 +11,8 @@ Page({
    */
   data: {
     swiperImgUrls: [],
-    booklist: []
+    booklist: [],
+    tabIsReay: false
   },
 
   /**
@@ -20,6 +21,11 @@ Page({
   onLoad(options) {
     this.getBookList()
     this._fetchSwiper()
+    setTimeout(() => {
+      this.setData({
+        tabIsReay: true
+      })
+    }, 1000)
   },
 
   /**

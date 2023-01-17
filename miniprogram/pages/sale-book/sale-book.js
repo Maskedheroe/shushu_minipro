@@ -229,7 +229,8 @@ Page({
                   price,
                   name,
                   term,
-                  bargain: this.data.bargain
+                  bargain: this.data.bargain,
+                  imgs: this.data.imgs
                 }
               }
             }).then((res) => {

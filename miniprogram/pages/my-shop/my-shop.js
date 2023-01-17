@@ -1,66 +1,73 @@
 // pages/my-shop/my-shop.js
+import useFetchEffect from './useFetchEffect'
+
+const {
+  fetch
+} = useFetchEffect()
+const MAX_LIMIT = 10
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    currentTab: '',
+    booklist: [],
+    wantedList: [],
+    currentList: [],
+    isReady: false // 防止快速操作tab
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({
+      currentTab: 'onSale'
+    })
+    this.fetchData('onSale')
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh() {
-
+    this.fetchData(this.data.currentTab)
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
+  handleChangeClassifier({
+    detail: {
+      classifier
+    }
+  }) {
+    // 切换前先清空
+    this.setData({
+      currentList: [],
+      wantedList: [],
+      booklist: [],
+      isReady: false,
+      currentTab: classifier
+    })
+    this.fetchData(classifier)
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  async fetchData(classifier) {
+    let res = []
+    if (classifier === 'onSale') {
+      res = await fetch('books', 'mysale', this.data.booklist.length, MAX_LIMIT)
+      this.setData({
+        booklist: [...this.data.booklist, ...res.data]
+      })
+    } else {
+      res = await fetch('wanted', 'mywanted', this.data.wantedList.length, MAX_LIMIT)
+      this.setData({
+        wantedList: [...this.data.wantedList, ...res.data]
+      })
+    }
+    this.setData({
+      currentList: this.data.currentTab === 'onSale' ? this.data.booklist : this.data.wantedList
+    })
+    setTimeout(() => {
+      this.setData({
+        isReady: true
+      })
+    }, 1000)
+  },
+  handleClick() {
+    console.log('click');
   }
 })

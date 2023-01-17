@@ -1,1 +1,26 @@
 /* pages/my-shop/my-shop.wxss */
+page {
+  background-color: #fff;
+}
+.classifier {
+  height: 60rpx;
+}
+
+.mcard {
+  position: relative;
+  height: 200rpx;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.container {
+  margin-bottom: 30rpx;
+}
+
+.time {
+  position: absolute;
+  bottom: 20rpx;
+  right: 214rpx;
+  color: #ccc;
+}
