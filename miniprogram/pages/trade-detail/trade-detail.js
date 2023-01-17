@@ -20,7 +20,7 @@ Page({
     isPublisher: false
   },
   observers: {
-    'isCollected': (isCollected) => {
+    ['isCollected'](isCollected) {
       this.setData({
         icon_collect: isCollected ? 'icon-start-active' : 'icon-star'
       })

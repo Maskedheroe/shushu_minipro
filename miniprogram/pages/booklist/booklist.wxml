@@ -15,7 +15,7 @@
 
   <!-- 分类器 -->
   <view class="classifier">
-    <Classifier bind:changeClassifier="handleChangeClassifier"/>
+    <Classifier bind:changeClassifier="handleChangeClassifier" isReadyProp="{{tabIsReay}}"/>
   </view>
   <!-- 分类器 -->
 

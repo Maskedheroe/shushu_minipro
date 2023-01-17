@@ -14,6 +14,7 @@ exports.main = async (event, context) => {
   })
   const db = cloud.database()
   const collection = db.collection('booklist')
+  const wxContext = cloud.getWXContext()
 
   app.router('booklist', async (ctx, _) => {
     const {
@@ -21,6 +22,20 @@ exports.main = async (event, context) => {
     } = event
     ctx.body = await collection.where({
         classify
+      })
+      .skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then(res => {
+        return res
+      })
+  })
+  app.router('mysale', async (ctx, _) => {
+    const openid = wxContext.OPENID
+
+    ctx.body = await collection.where({
+        openid
       })
       .skip(event.start)
       .limit(event.count)
@@ -40,6 +55,7 @@ exports.main = async (event, context) => {
       data: {
         ...bookinfo,
         createTime: db.serverDate(),
+        isSaled: 'false',
         openid
       }
     }).then(res => {

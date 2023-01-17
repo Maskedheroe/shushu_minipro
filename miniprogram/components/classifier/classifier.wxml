@@ -1,7 +1,5 @@
 <!--components/classifier/classifier.wxml-->
-<view>
-  <van-tabs active="{{ active }}" bind:change="onChange" sticky swipeable>
-    <van-tab title="售卖" name="onSale"></van-tab>
-    <van-tab title="求购" name="buy"></van-tab>
-  </van-tabs>
-</view>
+<van-tabs active="{{ active }}" bind:change="onChange" sticky swipeable>
+  <van-tab title="售卖" name="onSale" disabled="{{!isReady}}"></van-tab>
+  <van-tab title="求购" name="buy" disabled="{{!isReady}}"></van-tab>
+</van-tabs>

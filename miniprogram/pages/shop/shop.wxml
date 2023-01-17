@@ -1,2 +1,5 @@
 <!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+<view>
+  <Search/>
+  <Classifier/>
+</view>
