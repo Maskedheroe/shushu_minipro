@@ -14,13 +14,25 @@ exports.main = async (event, context) => {
 
   const db = cloud.database()
   const collection = db.collection('wanted')
-
+  const command = db.command
   app.router('booklist', async (ctx, _) => {
     const {
       classify
     } = event
     ctx.body = await collection.where({
         classify
+      })
+      .skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then(res => {
+        return res
+      })
+  })
+  app.router('allwanted', async (ctx, _) => {
+    ctx.body = await collection.where({
+        got: 'false'
       })
       .skip(event.start)
       .limit(event.count)
@@ -54,7 +66,7 @@ exports.main = async (event, context) => {
       data: {
         ...bookinfo,
         createTime: db.serverDate(),
-        got: false,
+        got: 'false',
         openid
       }
     }).then(res => {

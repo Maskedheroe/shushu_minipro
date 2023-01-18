@@ -1,5 +1,22 @@
 <!--components/playlist/playlist.wxml-->
 <view class="booklist-container" bindtap="handleClickItem">
-  <image class="booklist-img" src="{{bookitem.picUrl}}"></image>
-  <view class="booklist-name">{{bookitem.name}}</view>
+  <image class="booklist-img" src="{{bookitem.imgs[0]}}"></image>
+  <text class="name">{{bookitem.name}}</text>
+  <view class="tags">
+    <view class="old">
+      <van-tag plain type="primary">{{bookitem.old}}新</van-tag>
+    </view>
+    <view class="note">
+      <van-tag plain type="primary">{{bookitem.note}}笔记</van-tag>
+    </view>
+  </view>
+  <view class="info">
+    <image class="avatar" src="{{bookitem.userInfo.avatarUrl}}" />
+    <text class="user-name">
+      {{bookitem.userInfo.nickName}}
+    </text>
+    <text class="price">
+      {{bookitem.price}} ￥
+    </text>
+  </view>
 </view>

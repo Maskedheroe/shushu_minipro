@@ -21,7 +21,7 @@
 
   <!-- 物品列表页 -->
   <view class="booklist">
-    <block wx:for="{{booklist}}" wx:if="{{booklist.length}}" wx:key="id">
+    <block wx:for="{{currentList}}" wx:if="{{currentList.length}}" wx:key="id">
       <x-booklist bookitem="{{item}}" class="bookitem">
       </x-booklist>
     </block>

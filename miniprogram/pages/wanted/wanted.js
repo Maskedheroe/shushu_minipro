@@ -7,7 +7,7 @@ import {
 } from '../../static/classes'
 import formatTime from '../../utils/formatTime'
 const MAX_IMG_NUM = 9
-
+const app = getApp()
 Page({
 
   /**
@@ -36,6 +36,7 @@ Page({
     minDate: new Date().getTime(),
     minDate: new Date().getTime(),
     currentDate: new Date().getTime(), // 不提交给后端，组件专门使用
+    userInfo: {},
     classes
   },
 
@@ -44,6 +45,17 @@ Page({
    */
   onLoad(options) {
 
+  },
+  onShow() {
+    const { userInfo, hasUserInfo } = app.globalData.user
+    if (!hasUserInfo) {
+      wx.navigateTo({
+        url: '/pages/apply-auth/apply-auth',
+      })
+    }
+    this.setData({
+      userInfo
+    })
   },
   handleChooseCate() {
     // TODO 通过设置获取默认学院没做
@@ -150,7 +162,8 @@ Page({
                   name,
                   endTime,
                   imgs: this.data.imgs,
-                  bargain: this.data.bargain
+                  bargain: this.data.bargain,
+                  userInfo: this.data.userInfo
                 }
               }
             }).then((res) => {

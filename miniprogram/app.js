@@ -15,7 +15,11 @@ App({
     }
 
     this.globalData = {
-      openid: -1
+      openid: -1,
+      user: {
+        userInfo: {},
+        hasUserInfo: false
+      }
     };
     this.getOpenid()
   },
