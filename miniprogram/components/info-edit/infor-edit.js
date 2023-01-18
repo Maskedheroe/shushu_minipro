@@ -119,7 +119,7 @@ Component({
         saveTocloudFiles,
         saveToDataBase,
         backAndRefresh
-      } = useUploadEffect(this.data.imgs) // 用一个hook控制发布主流程
+      } = useUploadEffect() // 用一个hook控制发布主流程
       Dialog.confirm({
           context: this,
           title: '发布',
@@ -134,7 +134,7 @@ Component({
           const {
             promiseArr,
             fileIds
-          } = await saveTocloudFiles()
+          } = await saveTocloudFiles(this.data.imgs)
           await saveToDataBase(this.data.content, this.properties.userInfo, promiseArr, fileIds, this.properties.role)
           // 发布成功，清空当前页面数据
           backAndRefresh(getCurrentPages)

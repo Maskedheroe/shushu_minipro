@@ -7,5 +7,5 @@
   <view wx:if="{{currentList.length===0}}">
     <van-empty description="暂无内容"></van-empty>
   </view>
-  <Card currentList="currentList"/>
+  <Card class="list" currentList="{{currentList}}"/>
 </view>

@@ -8,7 +8,9 @@ Component({
       type: Array
     }
   },
-
+  created(){
+    console.log("?????", this.properties);
+  },
   /**
    * 组件的初始数据
    */

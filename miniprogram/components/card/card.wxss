@@ -1,1 +1,9 @@
 /* components/card/card.wxss */
+
+.mcard {
+  position: relative;
+  height: 200rpx;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}

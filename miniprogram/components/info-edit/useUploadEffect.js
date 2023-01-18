@@ -1,9 +1,9 @@
-const useUploadEffect = (imgs) => {
+const useUploadEffect = () => {
   const db = wx.cloud.database()
 
   const fileIds = []
 
-  const saveTocloudFiles = () => {
+  const saveTocloudFiles = (imgs) => {
     const promiseArr = []
     for (const item of imgs) {
       const p = new Promise((resolve, reject) => {

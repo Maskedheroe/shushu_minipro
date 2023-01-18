@@ -2,6 +2,7 @@
 import * as opts from '../../static/filedOpt'
 import checkoutField from '../../utils/checkoutFiled'
 import throttle from '../../utils/throttle'
+import saveTocloudFiles from '../../utils/saveImgs'
 import {
   classes
 } from '../../static/classes'
@@ -28,7 +29,7 @@ Page({
     bargain: false,
     currentOpt: [],
     form: {},
-    currentPicker: '',  // 目前选择哪条表单在填写
+    currentPicker: '', // 目前选择哪条表单在填写
     imgs: [],
     term: '',
     fieldNames: {
@@ -53,7 +54,10 @@ Page({
 
   },
   onShow() {
-    const { userInfo, hasUserInfo } = app.globalData.user
+    const {
+      userInfo,
+      hasUserInfo
+    } = app.globalData.user
     if (!hasUserInfo) {
       wx.navigateTo({
         url: '/pages/apply-auth/apply-auth',
@@ -194,40 +198,40 @@ Page({
       wx.showModal({
         title: '提示',
         content: '是否提交？',
-        success: (res) => {
+        success: async (res) => {
           if (res.confirm) {
-            wx.cloud.callFunction({
-              name: 'books',
-              data: {
-                $url: 'add',
-                // 组装完整的数据发给后端
-                bookinfo: {
-                  grade,
-                  address,
-                  bookCateGoryInfo: {
-                    bookCateGory,
-                    bookCateGoryID
-                  },
-                  old,
-                  note,
-                  material,
-                  remark,
-                  price,
-                  name,
-                  term,
-                  bargain: this.data.bargain,
-                  imgs: this.data.imgs,
-                  userInfo: this.data.userInfo
+            const {
+              promiseArr,
+              fileIds
+            } = await saveTocloudFiles(this.data.imgs)
+            Promise.all(promiseArr).then((res) => {
+              wx.cloud.callFunction({
+                name: 'books',
+                data: {
+                  $url: 'add',
+                  // 组装完整的数据发给后端
+                  bookinfo: {
+                    grade,
+                    address,
+                    bookCateGoryInfo: {
+                      bookCateGory,
+                      bookCateGoryID
+                    },
+                    old,
+                    note,
+                    material,
+                    remark,
+                    price,
+                    name,
+                    term,
+                    bargain: this.data.bargain,
+                    imgs: fileIds,
+                    userInfo: this.data.userInfo
+                  }
                 }
-              }
-            }).then((res) => {
-              wx.showToast({
-                title: '发布成功',
+              }).then((res) => {
+                this.hint()
               })
-              setTimeout(() => {
-                console.log('2222');
-                wx.navigateBack()
-              }, 1000);
             })
           } else if (res.cancel) {
             return
@@ -240,6 +244,15 @@ Page({
         icon: 'error'
       })
     }
+  },
+  hint() {
+    wx.showToast({
+      title: '发布成功',
+    })
+    setTimeout(() => {
+      console.log('2222');
+      wx.navigateBack()
+    }, 1000);
   },
   changebargain({
     detail

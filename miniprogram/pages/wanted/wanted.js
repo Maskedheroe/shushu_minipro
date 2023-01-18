@@ -6,6 +6,8 @@ import {
   classes
 } from '../../static/classes'
 import formatTime from '../../utils/formatTime'
+import saveTocloudFiles from '../../utils/saveImgs'
+
 const MAX_IMG_NUM = 9
 const app = getApp()
 Page({
@@ -47,7 +49,10 @@ Page({
 
   },
   onShow() {
-    const { userInfo, hasUserInfo } = app.globalData.user
+    const {
+      userInfo,
+      hasUserInfo
+    } = app.globalData.user
     if (!hasUserInfo) {
       wx.navigateTo({
         url: '/pages/apply-auth/apply-auth',
@@ -144,35 +149,36 @@ Page({
       wx.showModal({
         title: '提示',
         content: '是否提交？',
-        success: (res) => {
+        success: async (res) => {
           if (res.confirm) {
-            wx.cloud.callFunction({
-              name: 'wanted',
-              data: {
-                $url: 'add',
-                // 组装完整的数据发给后端
-                bookinfo: {
-                  bookCateGoryInfo: {
-                    bookCateGory,
-                    bookCateGoryID
-                  },
-                  material,
-                  remark,
-                  price,
-                  name,
-                  endTime,
-                  imgs: this.data.imgs,
-                  bargain: this.data.bargain,
-                  userInfo: this.data.userInfo
+            const {
+              promiseArr,
+              fileIds
+            } = await saveTocloudFiles(this.data.imgs)
+            Promise.all(promiseArr).then((res) => {
+              wx.cloud.callFunction({
+                name: 'wanted',
+                data: {
+                  $url: 'add',
+                  // 组装完整的数据发给后端
+                  bookinfo: {
+                    bookCateGoryInfo: {
+                      bookCateGory,
+                      bookCateGoryID
+                    },
+                    material,
+                    remark,
+                    price,
+                    name,
+                    endTime,
+                    imgs: fileIds,
+                    bargain: this.data.bargain,
+                    userInfo: this.data.userInfo
+                  }
                 }
-              }
-            }).then((res) => {
-              wx.showToast({
-                title: '发布成功',
+              }).then((res) => {
+                this.hint()
               })
-              setTimeout(() => {
-                wx.navigateBack()
-              }, 1000);
             })
           } else if (res.cancel) {
             return
@@ -234,7 +240,9 @@ Page({
       showEndTime: true
     })
   },
-  confirmTime({ detail }) {
+  confirmTime({
+    detail
+  }) {
     this.setData({
       showEndTime: false,
       endTime: formatTime(new Date(detail)),
@@ -246,5 +254,13 @@ Page({
       endTime: '',
       showEndTime: false
     })
+  },
+  hint() {
+    wx.showToast({
+      title: '发布成功',
+    })
+    setTimeout(() => {
+      wx.navigateBack()
+    }, 1000);
   }
 })
