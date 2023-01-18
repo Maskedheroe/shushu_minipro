@@ -1,10 +1,12 @@
-// pages/shop/shop.js
+// pages/apply-auth/apply-auth.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
   /**
@@ -61,5 +63,28 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  getUserInfo() {
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        app.globalData.user = {
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        }
+        wx.showToast({
+          title: '登录成功',
+          duration: 1000
+        })
+        wx.navigateBack()
+      },
+      fail: () => {
+        wx.showToast({
+          title: '未授权不能进入',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    })
   }
 })

@@ -83,8 +83,13 @@
           "scene": null
         },
         {
+<<<<<<< HEAD
           "name": "classifi",
           "pathName": "pages/classification/classification",
+=======
+          "name": "auth",
+          "pathName": "pages/apply-auth/apply-auth",
+>>>>>>> 583a7ed825e001ca12beaf5c8b1f01f26dbef4f6
           "query": "",
           "launchMode": "default",
           "scene": null

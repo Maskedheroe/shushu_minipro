@@ -7,7 +7,7 @@ import {
 } from '../../static/classes'
 
 const MAX_IMG_NUM = 9
-
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -28,7 +28,7 @@ Page({
     bargain: false,
     currentOpt: [],
     form: {},
-    currentPicker: '',
+    currentPicker: '',  // 目前选择哪条表单在填写
     imgs: [],
     term: '',
     fieldNames: {
@@ -36,6 +36,7 @@ Page({
       value: 'id',
       children: 'major'
     },
+    userInfo: {},
     classes
     // gradeOpt,
     // addressOpt: address,
@@ -51,31 +52,16 @@ Page({
   onLoad(options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+    const { userInfo, hasUserInfo } = app.globalData.user
+    if (!hasUserInfo) {
+      wx.navigateTo({
+        url: '/pages/apply-auth/apply-auth',
+      })
+    }
+    this.setData({
+      userInfo
+    })
   },
   handleChooseCate() {
     // TODO 通过设置获取默认学院没做
@@ -134,6 +120,7 @@ Page({
       showPop: false
     })
   },
+  // 图片上传方法
   handleChooseImg() {
     let maxChoose = MAX_IMG_NUM - this.data.imgs.length
     wx.chooseMedia({
@@ -174,6 +161,8 @@ Page({
       })
     }
   },
+  // 图片上传方法
+
   // 提交表单方法
   handleSubmit() {
     const {
@@ -226,7 +215,9 @@ Page({
                   price,
                   name,
                   term,
-                  bargain: this.data.bargain
+                  bargain: this.data.bargain,
+                  imgs: this.data.imgs,
+                  userInfo: this.data.userInfo
                 }
               }
             }).then((res) => {

@@ -11,20 +11,21 @@
 
 .booklist-img {
   width: 100%;
-  height: 320rpx;
+  height: 240rpx;
   border-radius: 6rpx;
   /* wxapp中 url不能是网络图片  */
 }
 
-.booklist-name {
-  display: -webkit-box;
+
+.name {
+  display: inline-block;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 26rpx;
   line-height: 1.2;
-  padding: 2px 0 0 6px;
+  padding-top: 4rpx;
 }
 
 .view-count {
@@ -34,4 +35,34 @@
   padding-bottom: 4px;
   color:gray;
   font-size: 10px;
+}
+.tags {
+  display: flex;
+}
+.old {
+  margin-right: 30rpx;
+}
+.info {
+  width: 100%;
+  height: 100rpx;
+}
+
+.avatar {
+  float: left;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-top: 20rpx;
+}
+.user-name {
+  display: inline-block;
+  width: 30rpx;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+.price {
+  float: right;
+  font-size: 28rpx;
+  margin-right: -10rpx;
 }

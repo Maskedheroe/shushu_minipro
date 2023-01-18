@@ -1,9 +1,14 @@
 // pages/playlist/playlist.js
 // 交易发布列表页
 import throttle from '../../utils/throttle'
-
+import useFetchEffect from './useFetchEffect'
 const db = wx.cloud.database()
 const MAX_LIMIT = 15
+
+const {
+  fetch
+} = useFetchEffect()
+const app = getApp()
 Page({
 
   /**
@@ -11,7 +16,12 @@ Page({
    */
   data: {
     swiperImgUrls: [],
-    booklist: []
+    booklist: [],
+    wantedList: [],
+    currentList: [],
+    currentTab: 'onSale',
+    tabIsReay: false,
+    userInfo: {}
   },
 
   /**
@@ -21,35 +31,17 @@ Page({
     this.getBookList()
     this._fetchSwiper()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    const { userInfo, hasUserInfo } = app.globalData.user
+    if (!hasUserInfo) {
+      wx.navigateTo({
+        url: '/pages/apply-auth/apply-auth',
+      })
+    }
+    this.setData({
+      userInfo
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -80,32 +72,38 @@ Page({
   }) {
     // console.log('detail', e.detail);
     // 请求后端查找不同分类商品 后端接口是books
-    this.getBookList(detail.classifier, true)
-  },
-  getBookList(classify = 'onSale', changeClassifier = false) {
-    wx.showLoading({
-      title: '加载中',
+    // this.getBookList(detail.classifier, true)
+    this.setData({
+      currentTab: detail.classifier,
+      currentList: []
     })
-    changeClassifier && this.setData({
-      booklist: []
-    });
-    wx.cloud.callFunction({
-      name: 'books',
-      data: {
-        start: this.data.booklist.length,
-        count: MAX_LIMIT,
-        $url: 'booklist',
-        classify
-      }
-    }).then((res) => {
+    this.getBookList()
+  },
+  async getBookList() {
+    let res = []
+    if (this.data.currentTab === 'onSale') {
+      res = await fetch('books', 'allsale', this.data.booklist.length, MAX_LIMIT)
       this.setData({
-        booklist: [...this.data.booklist, ...res.result.data]
+        booklist: [...this.data.booklist, ...res.data]
       })
-      wx.stopPullDownRefresh()
-      wx.hideLoading()
+    } else {
+      res = await fetch('wanted', 'allwanted', this.data.wantedList.length, MAX_LIMIT)
+      this.setData({
+        wantedList: [...this.data.wantedList, ...res.data]
+      })
+    }
+    this.setData({
+      currentList: this.data.currentTab === 'onSale' ? this.data.booklist : this.data.wantedList
     })
+    setTimeout(() => {
+      this.setData({
+        tabIsReay: true
+      })
+    }, 1000)
   },
-  handleSearch({ detail }) {
+  handleSearch({
+    detail
+  }) {
     // TODO shushu_19
   },
   _fetchSwiper() {

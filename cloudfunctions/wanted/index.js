@@ -2,22 +2,19 @@
 const cloud = require('wx-server-sdk')
 const TcbRouter = require('tcb-router')
 
-cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-}) // 使用当前云环境
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-
+  
   const app = new TcbRouter({
     event
   })
-  const db = cloud.database()
-  const collection = db.collection('booklist')
   const wxContext = cloud.getWXContext()
+
+  const db = cloud.database()
+  const collection = db.collection('wanted')
   const command = db.command
-
-
   app.router('booklist', async (ctx, _) => {
     const {
       classify
@@ -33,10 +30,9 @@ exports.main = async (event, context) => {
         return res
       })
   })
-
-  app.router('allsale', async (ctx, _) => {
+  app.router('allwanted', async (ctx, _) => {
     ctx.body = await collection.where({
-        isSaled: 'false'
+        got: 'false'
       })
       .skip(event.start)
       .limit(event.count)
@@ -46,7 +42,7 @@ exports.main = async (event, context) => {
         return res
       })
   })
-  app.router('mysale', async (ctx, _) => {
+  app.router('mywanted', async (ctx, _) => {
     const openid = wxContext.OPENID
 
     ctx.body = await collection.where({
@@ -70,7 +66,7 @@ exports.main = async (event, context) => {
       data: {
         ...bookinfo,
         createTime: db.serverDate(),
-        isSaled: 'false',
+        got: 'false',
         openid
       }
     }).then(res => {

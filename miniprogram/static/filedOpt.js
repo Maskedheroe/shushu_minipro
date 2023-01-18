@@ -37,31 +37,47 @@ export const material = [
 ]
 export const old = [
   {
-    text: '新',
+    text: '九成',
     value: 'old_01'
   },
   {
-    text: '中',
+    text: '八成',
     value: 'old_02'
   },
   {
-    text: '旧',
+    text: '七成',
     value: 'old_03'
+  },
+  {
+    text: '六成',
+    value: 'old_04'
   }
 ]
 
 export const note = [
   {
-    text: '少',
+    text: '无',
     value: 'note_01'
   },
   {
-    text: '中',
+    text: '少',
     value: 'note_02'
   },
   {
-    text: '多',
+    text: '较少',
     value: 'note_03'
+  },
+  {
+    text: '中等',
+    value: 'note_04'
+  },
+  {
+    text: '较多',
+    value: 'note_05'
+  },
+  {
+    text: '多',
+    value: 'note_06'
   }
 ]
 export const bookCateGory = [
