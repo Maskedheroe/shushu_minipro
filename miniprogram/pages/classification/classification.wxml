@@ -1,2 +1,20 @@
 <!--pages/classification/classification.wxml-->
-<text>pages/classification/classification.wxml</text>
+<view>
+  <Search bind:search="handleSearch" />
+  <Classifier bind:changeClassifier="handleChangeTab" isReadyProp="{{isReady}}" />
+
+  <view class="side-container">
+    <van-sidebar active-key="{{ activeKey }}" class="sidebar" bind:change="onChange">
+      <block wx:for="{{classes}}" wx:key="_id">
+        <van-sidebar-item title="{{item.name}}" bindtap="handleClickItem" data-info="{{item}}" />
+      </block>
+    </van-sidebar>
+  </view>
+  <view class="list">
+    <block wx:for="{{currentMajor}}" wx:key="_id">
+      <view class="list-item" bindtap="handleClickMajor" data-info="{{item}}">
+        {{item.name}}
+      </view>
+    </block>
+  </view>
+</view>

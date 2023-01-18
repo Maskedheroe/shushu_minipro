@@ -1,1 +1,32 @@
 /* pages/classification/classification.wxss */
+page {
+  background-color: #f1f1f1;
+  height: 85vh;
+}
+.side-container {
+  width: 156rpx;
+  height: 100%;
+}
+.sidebar {
+  display: block;
+  height: 85vh;
+  width: 100%;
+  overflow-y: auto;
+}
+.list {
+  position: absolute;
+  top: 200rpx;
+  right: 20rpx;
+  width: 560rpx;
+  height: 85vh;
+  overflow-y: auto;
+}
+.list-item {
+  background-color: #fff;
+  line-height: 100rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+  box-shadow: 10rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+}

@@ -2,10 +2,11 @@
 <view>
   <view class='header'>
     <!-- 放置icon -->
+    <image class="icon" src="../../images/shushu_icon.jpg"/>
   </view>
   <view class='content'>
     <view>舒舒 申请获取以下权限</view>
-    <text>获得你的公开信息(昵称、头像、地区及性别)</text>
+    <text>获得你的公开信息(昵称、头像)</text>
   </view>
   <button class='bottom' open-type="getUserInfo" lang="zh_CN" bindtap="getUserInfo">
     授权登录

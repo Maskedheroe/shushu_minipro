@@ -60,6 +60,21 @@ exports.main = async (event, context) => {
         return res
       })
   })
+  app.router('cate-sale', async (ctx, _) => {
+    ctx.body = await collection.where({
+        bookCateGoryInfo: {
+          bookCateGoryID: event.bookCateGoryId
+        },
+        isSaled: 'false'
+      })
+      .skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then(res => {
+        return res
+      })
+  })
   app.router('add', (ctx, _) => {
     const openid = wxContext.OPENID
 

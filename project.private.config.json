@@ -88,6 +88,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "classification",
+          "pathName": "pages/classification/classification",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

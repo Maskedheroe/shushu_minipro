@@ -59,15 +59,12 @@ Page({
       })
     }
     this.setData({
-      currentList: this.data.currentTab === 'onSale' ? this.data.booklist : this.data.wantedList
+      currentList: this.data.currentTab === 'onSale' ? [...this.data.booklist] : [...this.data.wantedList]
     })
     setTimeout(() => {
       this.setData({
         isReady: true
       })
     }, 1000)
-  },
-  handleClick() {
-    console.log('click');
   }
 })

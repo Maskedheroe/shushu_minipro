@@ -7,11 +7,5 @@
   <view wx:if="{{currentList.length===0}}">
     <van-empty description="暂无内容"></van-empty>
   </view>
-  <view wx:if="{{currentList.length>0}}">
-    <block wx:for="{{currentList}}" wx:key="_id">
-      <view class="mcard" data-tradeid="{{item._id}}" bindtap="handleClick">
-        <van-card price="{{item.price}}" thumb="{{item.imgs[0]}}" title="{{item.name}}" desc="{{item.remark}}" tag="{{item.isSaled === true ? '已售' : ''}}" />
-      </view>
-    </block>
-  </view>
+  <Card currentList="currentList"/>
 </view>

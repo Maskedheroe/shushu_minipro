@@ -18,7 +18,8 @@
     "pages/shop/shop",
     "pages/my-shop/my-shop",
     "pages/wanted/wanted",
-    "pages/apply-auth/apply-auth"
+    "pages/apply-auth/apply-auth",
+    "pages/classification-detail/classification-detail"
   ],
   "tabBar": {
     "color": "#474747",

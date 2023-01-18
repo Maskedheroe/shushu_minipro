@@ -7,6 +7,10 @@
   height: 300rpx;
   line-height: 450rpx;
 }
+.icon {
+  width: 100rpx;
+  height: 100rpx;
+}
   
 .header image {
   width: 200rpx;
