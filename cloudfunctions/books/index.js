@@ -15,6 +15,8 @@ exports.main = async (event, context) => {
   const db = cloud.database()
   const collection = db.collection('booklist')
   const wxContext = cloud.getWXContext()
+  const command = db.command
+
 
   app.router('booklist', async (ctx, _) => {
     const {
@@ -22,6 +24,19 @@ exports.main = async (event, context) => {
     } = event
     ctx.body = await collection.where({
         classify
+      })
+      .skip(event.start)
+      .limit(event.count)
+      .orderBy('createTime', 'desc')
+      .get()
+      .then(res => {
+        return res
+      })
+  })
+
+  app.router('allsale', async (ctx, _) => {
+    ctx.body = await collection.where({
+        isSaled: 'false'
       })
       .skip(event.start)
       .limit(event.count)

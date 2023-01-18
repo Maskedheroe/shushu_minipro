@@ -17,7 +17,8 @@
     "pages/trade-record/trade-record",
     "pages/shop/shop",
     "pages/my-shop/my-shop",
-    "pages/wanted/wanted"
+    "pages/wanted/wanted",
+    "pages/apply-auth/apply-auth"
   ],
   "tabBar": {
     "color": "#474747",

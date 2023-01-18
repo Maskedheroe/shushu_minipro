@@ -81,6 +81,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "auth",
+          "pathName": "pages/apply-auth/apply-auth",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
