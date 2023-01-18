@@ -1,0 +1,8 @@
+<!--components/card/card.wxml-->
+<view wx:if="{{currentList.length>0}}">
+    <block wx:for="{{currentList}}" wx:key="_id">
+      <view class="mcard" data-tradeid="{{item._id}}" bindtap="handleClick">
+        <van-card price="{{item.price}}" thumb="{{item.imgs[0]}}" title="{{item.name}}" desc="{{item.remark}}" tag="{{item.isSaled === true ? '已售' : ''}}" />
+      </view>
+    </block>
+  </view>

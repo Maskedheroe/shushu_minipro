@@ -1,0 +1,2 @@
+<!--pages/classification-detail/classification-detail.wxml-->
+<Card currentList="{{currentList}}"/>

@@ -1,0 +1,4 @@
+/* pages/classification-detail/classification-detail.wxss */
+page {
+  background-color: #f1f1f1;
+}

@@ -1,92 +1,112 @@
 // pages/classification/classification.js
 import {
-  classes
-} from '../../static/classes.js'
+  simpleClasses
+} from '../../static/simpleClasses.js'
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     activeKey: 0,
-    classes: classes,
-    showMajor: false
+    classes: [{
+      id: '00',
+      name: '公共课'
+    }, ...simpleClasses],
+    isReady: false,
+    currentTab: 'onSale',
+    currentSide: {
+      sideId: '00',
+      sideName: '公共课'
+    },
+    currentMajor: []
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-    const arr = []
-    for (let i = 0, len = classes.length; i < len; i++) {
-      if (classes[i].major.length) {
-        arr.push(...classes[i].major)
-      } else {
-        arr.push(classes[i])
-      }
-    }
     this.setData({
-      classes: arr
+      isReady: true,
+      activeKey: 0
     })
+    this.fetchMajor(this.data.currentSide.sideName)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  },
-  handleSearch({ detail }) {},
-  handleChangeTab({
+  handleSearch({
     detail
   }) {},
-  handleChangeSider({
+  handleChangeTab({
     detail
   }) {
     this.setData({
-      showMajor: detail !== 0,
-      activeKey: detail === 1 ? 2 : detail
+      currentTab: detail.classifier,
+      activeKey: 0,
+      currentSide: {
+        sideId: '00',
+        sideName: '公共课'
+      }
     })
-  }
+    this.fetchMajor(this.data.currentSide.sideName)
+  },
+  handleClickItem({
+    currentTarget: {
+      dataset: {
+        info // 最后解构出info使用
+      }
+    }
+  }) {
+    // 先清空数据
+    this.setData({
+      currentSide: info === '公共课' ? {
+        sideId: '00',
+        sideName: info
+      } : {
+        sideId: info.id,
+        sideName: info.name
+      }
+    })
+    // 请求后端
+    this.fetchMajor(this.data.currentSide.sideName)
+    // this.fetchData(this.data.currentTab)
+  },
+  fetchMajor(collegeName) {
+    if (collegeName === '公共课') {
+      this.setData({
+        currentMajor: [{
+          id: '00',
+          name: '所有公共课类'
+        }]
+      })
+      return
+    }
+    const college = simpleClasses.find((college) => college.name === collegeName)
+    this.setData({
+      currentMajor: [...college.major]
+    })
+  },
+  handleClickMajor({
+    currentTarget: {
+      dataset
+    }
+  }) {
+    const cateId = dataset.info.id
+    const currentTab = this.data.currentTab
+    if (cateId === '00') {
+      this.handleGoCommon()
+    }
+    wx.navigateTo({
+      url: `/pages/classification-detail/classification-detail?cateId=${cateId}&currentTab=${currentTab}`,
+    })
+  },
+  handleGoCommon() {
+    const cateId = '00'
+    const currentTab = this.data.currentTab
+    wx.navigateTo({
+      url: `/pages/classification-detail/classification-detail?cateId=${cateId}&currentTab=${currentTab}`,
+    })
+  },
+  onChange({detail}) {
+    this.setData({
+      activeKey: detail
+    })
+  },
 })
